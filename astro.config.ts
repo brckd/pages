@@ -5,4 +5,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://bricked.vercel.app",
   integrations: [mdx(), sitemap()],
+  experimental: {
+    viewTransitions: true,
+  },
 });
