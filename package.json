@@ -1,0 +1,77 @@
+{
+  "name": "@bricked/astro-template",
+  "private": true,
+  "description": "A template for Astro projects.",
+  "keywords": [
+    "astro-template"
+  ],
+  "homepage": "https://github.com/brckd/astro-template#readme",
+  "bugs": {
+    "url": "https://github.com/brckd/astro-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brckd/astro-template.git"
+  },
+  "license": "MIT",
+  "author": "Bricked",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "dev": "astro dev",
+    "format": "npx sort-package-json && npx prettier --write . && npx eslint --fix --no-error-on-unmatched-pattern .",
+    "prepare": "npx husky install",
+    "preview": "astro preview",
+    "start": "astro dev"
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
+  "lint-staged": {
+    "!(*.ts|package.json)": "npx prettier --ignore-unknown --write",
+    "*.ts": [
+      "npx prettier --write",
+      "npx eslint --fix"
+    ],
+    "package.json": [
+      "npx sort-package-json",
+      "npx prettier --write"
+    ]
+  },
+  "prettier": "@bricked/prettier-config",
+  "eslintConfig": {
+    "extends": "@bricked"
+  },
+  "release": {
+    "dryRun": true,
+    "extends": "@bricked/semantic-release-config"
+  },
+  "dependencies": {
+    "astro": "^2.10.14",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@bricked/eslint-config": "^1.0.0",
+    "@bricked/prettier-config": "^1.0.1",
+    "@bricked/semantic-release-config": "^1.1.0",
+    "@bricked/ts-config": "^1.2.3",
+    "@commitlint/config-conventional": "^17.6.5",
+    "@typescript-eslint/eslint-plugin": "^6.5.0",
+    "commitlint": "^17.6.6",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "sort-package-json": "^2.4.1",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
