@@ -1,0 +1,12 @@
+# modules
+node_modules/
+
+# build
+dist/
+.astro/
+tsconfig.tsbuildinfo
+
+# variables
+.npmrc
+.env
+.env.production
