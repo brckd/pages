@@ -3,7 +3,7 @@ import SocialLinks from "./SocialLinks.astro";
 const today = new Date();
 ---
 
-<footer>
+<footer transition:animate="morph" transition:name="footer">
   &copy; {today.getFullYear()} Bricked. All rights reserved.
   <SocialLinks />
 </footer>
