@@ -1,17 +1,17 @@
 {
-  "name": "@bricked/astro-template",
+  "name": "@bricked/pages",
   "private": true,
-  "description": "A template for Astro projects.",
+  "description": "My very own site on the interwebz.",
   "keywords": [
-    "astro-template"
+    "pages"
   ],
-  "homepage": "https://github.com/brckd/astro-template#readme",
+  "homepage": "https://github.com/brckd/pages#readme",
   "bugs": {
-    "url": "https://github.com/brckd/astro-template/issues"
+    "url": "https://github.com/brckd/pages/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brckd/astro-template.git"
+    "url": "git+https://github.com/brckd/pages.git"
   },
   "license": "MIT",
   "author": "Bricked",
@@ -45,7 +45,6 @@
     "extends": "@bricked"
   },
   "release": {
-    "dryRun": true,
     "extends": "@bricked/semantic-release-config"
   },
   "dependencies": {
