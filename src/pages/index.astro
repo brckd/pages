@@ -1,15 +1,30 @@
 ---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 ---
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
   <body>
-    <h1>Astro</h1>
+    <Header title={SITE_TITLE} />
+    <main>
+      <h1>Hello, Mom! 👋</h1>
+      <p>
+        And glad you found my cozy place on the interwebz! This is where I do big boys stuff like
+        blogging and hosting my projects :D However, this site is still
+        <abbr title="Work in Progress">WIP</abbr>, so stay tuned!
+      </p>
+      <p>
+        Do check out my <a href="/about">About Me</a> to learn more about me or to say hi! Also check
+        out <a href="https://linerly.xyz">Linerly's webzsite</a>, which inspired this in the first
+        place :o
+      </p>
+    </main>
+    <Footer />
   </body>
 </html>
