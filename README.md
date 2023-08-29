@@ -8,8 +8,6 @@ My very own site on the interwebz.
 
 ## Deploy
 
-Set the `SITE` environment variable to the url of the deployment.
-
 ### Develop locally
 
 ```sh
