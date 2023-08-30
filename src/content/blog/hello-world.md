@@ -1,7 +1,7 @@
 ---
 title: "Hello, World!"
 description: "This is a test lol."
-pubDate: "Aug 29 2023"
+pubDate: "Aug 29 2023 20:00"
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
