@@ -1,6 +1,18 @@
 ---
 title: "Welcome to my blog"
 description: "This is an introduction to my new blog."
-pubDate: "Aug 30 2023 9:30"
+pubDate: "Aug 30 2023 15:30"
 heroImage: https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d
 ---
+
+Hi everyone, this is my new blog! Expect irregular posts about topics I'm interested in, like tech and privacy. There will also be frequent updates about the website and other projects of mine!
+
+## Why
+I've always wanted to make a website ever since I wanted to make a dashboard for my discord bots. However, I haven't been too successfull, as making websites without any frameworks was a pain for me.
+
+But then I recently found [Linerly's blog](https://linerly.xyz/en/blog) which inspired me to get into web development again! At the same time Fireship launched a new video about the [Astro framework](https://astro.build), which I immediately fell in love with.
+
+Luckily, Astro already provides tools that make it easy to start creating content with markdown fast. Using their official blog template I was able to create the bare bones of the website in a day!
+
+## More to come
+I already have some plans for improving the website and the blog and will add these ad little updates while I'm adding more content. Stay tuned!
