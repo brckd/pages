@@ -1,15 +1,18 @@
 ---
+import SocialBadge from "../components/SocialBadge.astro";
 import Layout from "../layouts/BlogPost.astro";
 
 const GITHUB_TAG = "brckd";
-const GITHUB_URI = `https://github.com/${GITHUB_TAG}`;
 const NPM_TAG = "bricked";
-const NPM_URI = `https://www.npmjs.com/~${NPM_TAG}`;
 const DISCORD_TAG = "brckd";
-const DISCORD_URI = "https://discord.com/users/691572882148425809";
 const MATRIX_TAG = "bricked:matrix.org";
-const MATRIX_URI = `https://matrix.to/#/@${MATRIX_TAG}:matrix.org`;
+const DISCORD_ID = "691572882148425809";
 const EMAIL = "hello@bricked.dev";
+
+const GITHUB_URI = `https://github.com/${GITHUB_TAG}`;
+const NPM_URI = `https://www.npmjs.com/~${NPM_TAG}`;
+const DISCORD_URI = `https://discord.com/users/${DISCORD_ID}`;
+const MATRIX_URI = `https://matrix.to/#/@${MATRIX_TAG}`;
 const EMAIL_URI = `mailto:${EMAIL}`;
 ---
 
@@ -28,15 +31,15 @@ const EMAIL_URI = `mailto:${EMAIL}`;
   <h2>Contact</h2>
   <p>Say hi to me here!</p>
   <ul>
-    <li><b>Discord</b><a href={DISCORD_URI}><code>@{DISCORD_TAG}</code></a></li>
-    <li><b>Matrix</b><a href={MATRIX_URI}><code>@{MATRIX_TAG}</code></a></li>
-    <li><b>Email</b><a href={EMAIL_URI}><code>{EMAIL}</code></a></li>
+    <li><SocialBadge name="Discord" uri={DISCORD_URI} tag={DISCORD_TAG} /></li>
+    <li><SocialBadge name="Matrix" uri={MATRIX_URI} tag={MATRIX_TAG} /></li>
+    <li><SocialBadge name="Email" uri={EMAIL_URI} literal tag={EMAIL} /></li>
   </ul>
 
   <h2>Code</h2>
   <p>Find my newest projects here!</p>
   <ul>
-    <li><b>GitHub</b><a href={GITHUB_URI}><code>@{GITHUB_TAG}</code></a></li>
-    <li><b>NPM</b><a href={NPM_URI}>@{NPM_TAG}<code></code></a></li>
+    <li><SocialBadge name="GitHub" uri={GITHUB_URI} tag={GITHUB_TAG} /></li>
+    <li><SocialBadge name="NPM" uri={NPM_URI} tag={NPM_TAG} /></li>
   </ul>
 </Layout>
