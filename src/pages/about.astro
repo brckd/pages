@@ -2,18 +2,18 @@
 import SocialBadge from "../components/SocialBadge.astro";
 import Layout from "../layouts/BlogPost.astro";
 
-const GITHUB_TAG = "brckd";
-const NPM_TAG = "bricked";
-const DISCORD_TAG = "brckd";
-const MATRIX_TAG = "bricked:matrix.org";
-const DISCORD_ID = "691572882148425809";
-const EMAIL = "hello@bricked.dev";
-
-const GITHUB_URI = `https://github.com/${GITHUB_TAG}`;
-const NPM_URI = `https://www.npmjs.com/~${NPM_TAG}`;
-const DISCORD_URI = `https://discord.com/users/${DISCORD_ID}`;
-const MATRIX_URI = `https://matrix.to/#/@${MATRIX_TAG}`;
-const EMAIL_URI = `mailto:${EMAIL}`;
+import {
+  GITHUB_TAG,
+  NPM_TAG,
+  DISCORD_TAG,
+  MATRIX_TAG,
+  EMAIL,
+  GITHUB_URI,
+  NPM_URI,
+  DISCORD_URI,
+  MATRIX_URI,
+  EMAIL_URI,
+} from "../consts";
 ---
 
 <Layout
