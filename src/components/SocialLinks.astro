@@ -1,5 +1,9 @@
+---
+import { DISCORD_URI, MATRIX_URI, REPO_URI } from "../consts";
+---
+
 <div class="social-links">
-  <a href="https://discord.com/users/691572882148425809" target="_blank">
+  <a href={DISCORD_URI} target="_blank">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -13,7 +17,7 @@
       ></path>
     </svg>
   </a>
-  <a href="https://matrix.to/#/@bricked:matrix.org" target="_blank">
+  <a href={MATRIX_URI} target="_blank">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="32"
@@ -33,7 +37,7 @@
       ></path>
     </svg>
   </a>
-  <a href="https://github.com/brckd/pages" target="_blank">
+  <a href={REPO_URI} target="_blank">
     <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32" astro-icon="social/github">
       <title>Go to the GitHub repo</title>
       <path
