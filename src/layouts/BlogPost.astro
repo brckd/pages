@@ -67,7 +67,7 @@ const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.prop
                 src={heroImage}
                 alt=""
                 transition:name={`hero-image-${slug}`}
-                transition:animate="morph"
+               
               />
             )
           }
@@ -84,7 +84,7 @@ const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.prop
                 )
               }
             </div>
-            <h1 transition:name={`title-${slug}`} transition:animate="morph">{title}</h1>
+            <h1 transition:name={`title-${slug}`}>{title}</h1>
             <hr />
           </div>
           <slot />
