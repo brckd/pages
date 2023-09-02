@@ -14,7 +14,7 @@ const blog = defineCollection({
       .string()
       .optional()
       .transform((str) => (str ? new Date(str) : undefined)),
-    banner: z.string().default("/default-post-banner.jpg"),
+    banner: z.string().default("/post-banner.jpg"),
   }),
 });
 
