@@ -7,22 +7,22 @@ import FormattedDate from "@components/FormattedDate.astro";
 
 type Props = CollectionEntry<"blog">["data"] & { slug?: CollectionEntry<"blog">["slug"] };
 
-const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.props;
+const { title, description, pubDate, updatedDate, banner, slug } = Astro.props;
 ---
 
 <html lang="en">
   <head>
-    <BaseHead title={title} description={description} image={heroImage} />
+    <BaseHead title={title} description={description} image={banner} />
     <style>
       main {
         width: calc(100% - 2em);
         max-width: 100%;
         margin: 0;
       }
-      .hero-image {
+      .banner {
         width: 100%;
       }
-      .hero-image img {
+      .banner img {
         display: block;
         margin: 0 auto;
         border-radius: 12px;
@@ -58,15 +58,15 @@ const { title, description, pubDate, updatedDate, heroImage, slug } = Astro.prop
     <Header />
     <main>
       <article>
-        <div class="hero-image">
+        <div class="banner">
           {
-            heroImage && (
+            banner && (
               <img
                 width={1020}
                 height={510}
-                src={heroImage}
+                src={banner}
                 alt=""
-                transition:name={`hero-image-${slug}`}
+                transition:name={`banner-${slug}`}
                
               />
             )

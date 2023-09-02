@@ -2,7 +2,7 @@
 title: "My very own domain"
 description: "Say hi to bricked.dev!"
 pubDate: "Sep 01 2023 23:00"
-heroImage: https://www.cam.ac.uk/files/news/research/news/internet-660x330.jpg
+banner: https://www.cam.ac.uk/files/news/research/news/internet-660x330.jpg
 ---
 
 Following

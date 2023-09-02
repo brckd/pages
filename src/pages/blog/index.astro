@@ -97,8 +97,8 @@ const posts = (await getCollection("blog")).sort(
                   <img
                     width={720}
                     height={360}
-                    src={post.data.heroImage}
-                    transition:name={`hero-image-${post.slug}`}
+                    src={post.data.banner}
+                    transition:name={`banner-${post.slug}`}
                    
                   />
                   <h4
