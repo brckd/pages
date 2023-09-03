@@ -17,5 +17,7 @@ export const NPM_URI = `https://www.npmjs.com/~${NPM_TAG}`;
 export const DISCORD_URI = `https://discord.com/users/${DISCORD_ID}`;
 export const MATRIX_URI = `https://matrix.to/#/@${MATRIX_TAG}`;
 export const EMAIL_URI = `mailto:${EMAIL}`;
+export const MUES_URI = "https://discord.gg/5gukKTggNZ";
+export const ARTCADE_URI = "https://discord.gg/5gukKTggNZ";
 
 export const REPO_URI = `${GITHUB_URI}/pages`;
