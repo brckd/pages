@@ -1,9 +1,16 @@
-# [1.1.0](https://github.com/brckd/pages/compare/v1.0.1...v1.1.0) (2024-04-10)
+## [1.1.1](https://github.com/brckd/pages/compare/v1.1.0...v1.1.1) (2024-04-10)
 
+
+### Bug Fixes
+
+* make embed image be small ([d943892](https://github.com/brckd/pages/commit/d943892555c7f7ec50447e94667c651daf885a52))
+
+# [1.1.0](https://github.com/brckd/pages/compare/v1.0.1...v1.1.0) (2024-04-10)
 
 ### Features
 
-* customize theme ([3c14cca](https://github.com/brckd/pages/commit/3c14cca29bf69c5165eecbee1c400ec08c226cc1))
+- customize theme
+  ([3c14cca](https://github.com/brckd/pages/commit/3c14cca29bf69c5165eecbee1c400ec08c226cc1))
 
 # 1.0.0 (2024-03-04)
 
