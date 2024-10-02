@@ -1,8 +1,0 @@
-{
-  "recommendations": [
-    "bierner.github-markdown-preview",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "astro-build.astro-vscode"
-  ]
-}

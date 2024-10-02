@@ -11,5 +11,7 @@
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"]
     }
-  }
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
 }
