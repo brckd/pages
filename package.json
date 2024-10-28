@@ -41,10 +41,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.9",
-    "@fontsource-variable/aleo": "^5.1.0",
     "@fontsource-variable/hanken-grotesk": "^5.1.0",
-    "@fontsource-variable/jetbrains-mono": "^5.1.1",
-    "@fontsource-variable/source-sans-3": "^5.1.0",
     "astro": "^5.0.0-beta.3"
   },
   "devDependencies": {
