@@ -7,15 +7,16 @@ import "@fontsource-variable/aleo";
 import "@fontsource-variable/hanken-grotesk";
 import "@fontsource-variable/source-sans-3";
 import { ClientRouter } from "astro:transitions";
-import { SITE_TITLE } from "@src/consts";
+import { SITE_TITLE, SITE_DESCRIPTION } from "@src/consts";
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
-const { title, description } = Astro.props;
-const properTitle = `${title}${title && " - "}${SITE_TITLE}`;
+let { title = "", description = SITE_DESCRIPTION } = Astro.props;
+if (title) title += " - ";
+title += SITE_TITLE;
 ---
 
 <!-- Global Metadata -->
@@ -26,7 +27,7 @@ const properTitle = `${title}${title && " - "}${SITE_TITLE}`;
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
-<meta name="title" content={properTitle} />
+<meta name="title" content={title} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
