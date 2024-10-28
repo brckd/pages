@@ -2,10 +2,7 @@
   "name": "@bricked/pages",
   "private": true,
   "description": "My very own site on the interwebz.",
-  "keywords": [
-    "pages"
-  ],
-  "homepage": "https://github.com/brckd/pages#readme",
+  "homepage": "https://bricked.dev/",
   "bugs": {
     "url": "https://github.com/brckd/pages/issues"
   },
@@ -14,15 +11,17 @@
     "url": "git+https://github.com/brckd/pages.git"
   },
   "license": "MIT",
-  "author": "Bricked",
+  "author": "bricked",
   "type": "module",
-  "main": "dist/index.js",
   "scripts": {
     "astro": "astro",
     "build": "astro build",
     "dev": "astro dev",
-    "format": "npx sort-package-json && npx prettier --write . && npx eslint --fix --no-error-on-unmatched-pattern .",
-    "prepare": "npx husky install",
+    "format": "$npm_execpath run format:package; $npm_execpath run format:prettier && $npm_execpath run format:eslint",
+    "format:eslint": "eslint --fix src/",
+    "format:package": "sort-package-json",
+    "format:prettier": "prettier --write .",
+    "prepare": "npx husky",
     "preview": "astro preview",
     "start": "astro dev"
   },
@@ -30,8 +29,8 @@
     "extends": "@commitlint/config-conventional"
   },
   "lint-staged": {
-    "!(*.ts|package.json)": "npx prettier --ignore-unknown --write",
-    "*.ts": [
+    "!(*.((m|c)?(t|j)sx?|astro)|package.json)": "npx prettier --ignore-unknown --write",
+    "*.((m|c)?(t|j)sx?|astro)": [
       "npx prettier --write",
       "npx eslint --fix"
     ],
@@ -40,39 +39,27 @@
       "npx prettier --write"
     ]
   },
-  "prettier": "@bricked/prettier-config",
-  "eslintConfig": {
-    "extends": "@bricked"
-  },
-  "release": {
-    "extends": "@bricked/semantic-release-config"
-  },
   "dependencies": {
-    "@astrojs/rss": "^4.0.7",
-    "@astrojs/sitemap": "^3.1.6",
+    "@astrojs/rss": "^4.0.9",
+    "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.0.0-beta.3",
-    "astro-compressor": "^0.4.0"
+    "astro-compressor": "^0.4.1"
   },
   "devDependencies": {
-    "@bricked/eslint-config": "^1.0.0",
-    "@bricked/prettier-config": "^1.0.1",
-    "@bricked/semantic-release-config": "^1.1.0",
-    "@bricked/ts-config": "^1.2.3",
-    "@commitlint/config-conventional": "^17.6.5",
-    "@typescript-eslint/eslint-plugin": "^6.5.0",
-    "commitlint": "^17.6.6",
-    "eslint": "^8.48.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^16.0.2",
-    "eslint-plugin-promise": "^6.1.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.2",
-    "prettier": "^2.8.8",
-    "sort-package-json": "^2.4.1",
-    "typescript": "^5.2.2"
-  },
-  "publishConfig": {
-    "access": "public"
+    "@commitlint/config-conventional": "^19.5.0",
+    "@eslint/js": "^9.13.0",
+    "@types/eslint__js": "^8.42.3",
+    "@typescript-eslint/parser": "^8.11.0",
+    "commitlint": "^19.5.0",
+    "eslint": "^9.13.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-astro": "^1.3.0",
+    "husky": "^9.1.6",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "sort-package-json": "^2.10.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.11.0"
   }
 }
