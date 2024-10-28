@@ -1,0 +1,44 @@
+---
+import Head from "@comps/Head.astro";
+import Header from "@comps/Header.astro";
+import Footer from "@comps/Footer.astro";
+import spin from "@assets/spin.svg";
+import { Image } from "astro:assets";
+import { SITE_TITLE } from "@src/consts";
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title = "" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" transition:animate="none">
+  <head>
+    <Head {...Astro.props} />
+  </head>
+  <body>
+    <Header title={title} />
+
+    <main transition:animate="slide">
+      <slot name="title"
+        ><h1>
+          {title}
+        </h1></slot
+      >
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+</style>

@@ -21,7 +21,7 @@
     "format:eslint": "eslint --fix src/",
     "format:package": "sort-package-json",
     "format:prettier": "prettier --write .",
-    "prepare": "npx husky",
+    "prepare": "husky",
     "preview": "astro preview",
     "start": "astro dev"
   },
@@ -41,9 +41,11 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.9",
-    "@astrojs/sitemap": "^3.2.1",
-    "astro": "^5.0.0-beta.3",
-    "astro-compressor": "^0.4.1"
+    "@fontsource-variable/aleo": "^5.1.0",
+    "@fontsource-variable/hanken-grotesk": "^5.1.0",
+    "@fontsource-variable/jetbrains-mono": "^5.1.1",
+    "@fontsource-variable/source-sans-3": "^5.1.0",
+    "astro": "^5.0.0-beta.3"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^19.5.0",

@@ -13,6 +13,6 @@ export async function GET(context) {
         ...post.data,
         link: `/blog/${post.slug}/`,
       })),
-    })
+    }),
   );
 }

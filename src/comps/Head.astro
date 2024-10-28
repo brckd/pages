@@ -2,18 +2,20 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import "@styles/global.css";
-import { ViewTransitions } from "astro:transitions";
+import "@fontsource-variable/jetbrains-mono";
+import "@fontsource-variable/aleo";
+import "@fontsource-variable/hanken-grotesk";
+import "@fontsource-variable/source-sans-3";
+import { ClientRouter } from "astro:transitions";
 import { SITE_TITLE } from "@src/consts";
 
 interface Props {
   title: string;
   description: string;
-  image?: string;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-const { title, description, image = "/about-banner.jpg" } = Astro.props;
+const { title, description } = Astro.props;
+const properTitle = `${title}${title && " - "}${SITE_TITLE}`;
 ---
 
 <!-- Global Metadata -->
@@ -22,16 +24,9 @@ const { title, description, image = "/about-banner.jpg" } = Astro.props;
 <link rel="icon" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
 
-<!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
-
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
-
 <!-- Primary Meta Tags -->
 <title>{title}</title>
-<meta name="title" content={title} />
+<meta name="title" content={properTitle} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
@@ -39,7 +34,6 @@ const { title, description, image = "/about-banner.jpg" } = Astro.props;
 <meta property="og:url" content={Astro.url} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
 <meta property="og:site_name" content={SITE_TITLE} />
 
 <!-- Twitter -->
@@ -47,9 +41,8 @@ const { title, description, image = "/about-banner.jpg" } = Astro.props;
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
 
 <!-- Android -->
-<meta name="theme-color" content="#89b4fa" />
+<meta name="theme-color" content="#1676e8" />
 
-<ViewTransitions />
+<ClientRouter />

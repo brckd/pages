@@ -1,30 +1,29 @@
 ---
-import BaseHead from "@components/BaseHead.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import { SITE_TITLE, SITE_DESCRIPTION } from "@src/consts";
+import Layout from "@layouts/Layout.astro";
+import spinning from "@assets/spinning.svg";
+import { Image } from "astro:assets";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <BaseHead title="Bricked Home" description={SITE_DESCRIPTION} />
-  </head>
-  <body>
-    <Header title={SITE_TITLE} />
-    <main>
-      <h1>Hello, world! 👋</h1>
-      <p>
-        And glad you found my cozy place on the interwebz! This is where I do big boys stuff like
-        blogging and hosting my projects :D However, this site is still
-        <abbr title="Work in Progress">WIP</abbr>, so stay tuned!
-      </p>
-      <p>
-        Do check out my <a href="/about">About Me</a> to learn more about me or to say hi! Also check
-        out <a href="https://linerly.xyz">Linerly's webzsite</a>, which inspired me to do this in
-        the first place :o
-      </p>
-    </main>
-    <Footer />
-  </body>
-</html>
+<Layout title="home">
+  <h1 slot="title">
+    <Image src={spinning} height={80} alt="My avatar spinning." id="spinning" />
+    this is me, bricked.
+  </h1>
+  <p>
+    I'm a digital privacy advocate and like contributing to open-source. So far
+    I have specialized in NixOS configurations, accessible websites and Discord
+    bots, but I always love to learn something new! I'm also maintaining a <a
+      href="/blog">blog</a
+    > about my projects, personal updates and generally topics I'm interested in.
+    You can find me elsewhere through my <a href="/socials">socials</a>.
+  </p>
+</Layout>
+
+<style>
+  h1 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5em;
+  }
+</style>

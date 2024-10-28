@@ -1,8 +1,0 @@
----
-type Props = { name?: string; uri: string; tag: string; literal?: boolean };
-
-const { name, uri, tag, literal } = Astro.props;
----
-
-{name && <b>{name} </b>}
-<a href={uri} target="_blank"><code>{literal ? "" : "@"}{tag}</code></a>

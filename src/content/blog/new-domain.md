@@ -1,13 +1,12 @@
 ---
-title: "My very own domain"
-description: "Say hi to bricked.dev!"
+title: "my very own domain"
+description: "say hi to bricked.dev!"
 pubDate: "Sep 01 2023 23:00"
-banner: https://www.cam.ac.uk/files/news/research/news/internet-660x330.jpg
 ---
 
 Following
 [Linerly's announcement](https://linerly.xyz/en/blog/a-new-domain-name-that-i-finally-own/) exactly
-one month ago, my very own webzsite now has its very own domain too! This means that
+one month ago, my very own website now has its very own domain too! This means that
 `bricked.vercel.app` is now the much shorter `bricked.dev`, but the old domain will still redirect
 to the new one for a while.
 
