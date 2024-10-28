@@ -3,7 +3,7 @@
   --color-text: 200, 200, 222;
   --color-highlight: 22, 118, 232;
   --spacing-content-width: 800px;
-  --spacing-padding: 1.5em;
+  --spacing-padding: 1em;
   --spacing-gap: 1em;
   --font-layout: "Hanken Grotesk Variable", sans-serif;
 }
@@ -18,7 +18,7 @@ body {
 
 main {
   max-width: var(--spacing-content-width);
-  min-height: calc(100vh - 15em);
+  min-height: calc(100vh - 10em);
   margin: 0 auto;
   padding: var(--spacing-padding);
 }
