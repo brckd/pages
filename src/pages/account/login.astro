@@ -1,0 +1,14 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { actions } from "astro:actions";
+---
+
+<Layout title="login">
+  <form method="post" action={"/" + actions.account.login}>
+    <label for="slug">Username</label>
+    <input required type="text" name="slug" />
+    <label for="password">Password</label>
+    <input required type="password" name="password" />
+    <button>Login</button>
+  </form>
+</Layout>

@@ -1,21 +1,64 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { SITE_DESCRIPTION } from "@src/consts";
-import { getCollection } from "astro:content";
+import { db, posts, postEdits } from "@lib/db";
+import { eq, desc, max, min } from "drizzle-orm";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const postTimeRanges = db
+  .select({
+    id: posts.id,
+    oldest: min(postEdits.publishedAt).as("oldest"),
+    newest: max(postEdits.publishedAt).as("newest"),
+  })
+  .from(posts)
+  .innerJoin(postEdits, eq(postEdits.postId, posts.id))
+  .groupBy(posts.id)
+  .as("post_time_ranges");
+const newestPosts = await db
+  .select({ ...postEdits, firstPublishedAt: postTimeRanges.oldest })
+  .from(postTimeRanges)
+  .innerJoin(postEdits, eq(postEdits.publishedAt, postTimeRanges.newest))
+  .orderBy(desc(postTimeRanges.oldest));
+
+const formatDate = (date: Date) =>
+  date.toLocaleString("en-GB", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
 ---
 
 <Layout title="blog">
-  <ul>
+  <div class="article-list">
     {
-      posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-        </li>
+      newestPosts.map((post) => (
+        <article>
+          <a href={`/blog/${post.slug}/`}>
+            <h2>{post.title}</h2>
+          </a>
+          {post.description}
+          <footer>{formatDate(post.firstPublishedAt)}</footer>
+        </article>
       ))
     }
-  </ul>
+  </div>
 </Layout>
+
+<style>
+  h2 {
+    margin: 0;
+  }
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap);
+  }
+  article {
+    border: rgb(var(--color-highlight)) var(--size-border-width) solid;
+    padding: var(--spacing-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap);
+  }
+  footer {
+    font-size: 0.8em;
+  }
+</style>
