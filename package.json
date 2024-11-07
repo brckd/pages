@@ -25,9 +25,6 @@
     "preview": "astro preview",
     "start": "astro dev"
   },
-  "commitlint": {
-    "extends": "@commitlint/config-conventional"
-  },
   "lint-staged": {
     "!(*.((m|c)?(t|j)sx?|astro)|package.json)": "npx prettier --ignore-unknown --write",
     "*.((m|c)?(t|j)sx?|astro)": [
