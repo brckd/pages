@@ -5,8 +5,6 @@
     "paths": {
       "@root/*": ["./*"],
       "@src/*": ["src/*"],
-      "@lib/*": ["src/lib/*"],
-      "@actions/*": ["src/actions/*"],
       "@comps/*": ["src/comps/*"],
       "@assets/*": ["src/assets/*"],
       "@content/*": ["src/content/*"],
