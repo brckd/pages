@@ -9,6 +9,7 @@ interface Props {
 let { title = "", description = SITE_DESCRIPTION } = Astro.props;
 if (title) title += " - ";
 title += SITE_TITLE;
+title = title.toLowerCase();
 ---
 
 <meta charset="utf-8" />
@@ -34,3 +35,9 @@ title += SITE_TITLE;
 
 <meta name="theme-color" content="#1676e8" />
 <link rel="me" href="https://tilde.zone/@bricked" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL("/blog/rss.xml", Astro.site)}
+/>

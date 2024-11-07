@@ -1,21 +1,54 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import { SITE_DESCRIPTION } from "@src/consts";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+const formatDate = (date: Date) =>
+  date.toLocaleString("en-GB", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
 ---
 
 <Layout title="blog">
-  <ul>
+  <div class="article-list">
     {
       posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.slug}/`}>{post.data.title}</a>
-        </li>
+        <article>
+          <a href={`/blog/${post.slug}/`}>
+            <h2>{post.data.title}</h2>
+          </a>
+          {post.data.description}
+          <footer>
+            published {formatDate(post.data.pubDate)}
+            {post.data.updatedDate &&
+              `, last updated ${formatDate(post.data.updatedDate)}`}
+          </footer>
+        </article>
       ))
     }
-  </ul>
+  </div>
 </Layout>
+
+<style>
+  h2 {
+    margin: 0;
+  }
+  .article-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap);
+  }
+  article {
+    border: rgb(var(--color-highlight)) var(--size-border-width) solid;
+    padding: var(--spacing-padding);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap);
+  }
+  footer {
+    font-size: 0.8em;
+  }
+</style>

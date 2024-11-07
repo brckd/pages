@@ -2,7 +2,8 @@
   --color-background: 16, 16, 20;
   --color-text: 200, 200, 222;
   --color-highlight: 22, 118, 232;
-  --spacing-content-width: 800px;
+  --size-content-width: 800px;
+  --size-border-width: 2px;
   --spacing-padding: 1em;
   --spacing-gap: 1em;
   --font-layout: "Hanken Grotesk Variable", sans-serif;
@@ -18,7 +19,7 @@ body {
 }
 
 main {
-  max-width: var(--spacing-content-width);
+  max-width: var(--size-content-width);
   min-height: calc(100vh - 6em);
   margin: 0 auto;
   padding: var(--spacing-padding);
@@ -34,4 +35,13 @@ a {
 
 h1 {
   margin-top: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: lowercase;
 }

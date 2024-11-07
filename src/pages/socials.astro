@@ -1,13 +1,9 @@
 ---
-import Layout from "@layouts/BlogPost.astro";
+import Layout from "@layouts/Layout.astro";
 const mail = "hxello@brickxed.dexv".replaceAll("x", "");
 ---
 
-<Layout
-  title="socials"
-  description="a list of my socials."
-  pubDate={new Date("Aug 29 2023")}
->
+<Layout title="socials" description="a list of my socials.">
   <p>
     I'm all around the internet! This is a list of platforms I'm most active on.
   </p>
@@ -68,5 +64,7 @@ const mail = "hxello@brickxed.dexv".replaceAll("x", "");
     border-collapse: separate;
     border-spacing: 1ch 0;
     padding: 0;
+    border: rgb(var(--color-highlight)) var(--size-border-width) solid;
+    padding: var(--spacing-padding);
   }
 </style>
