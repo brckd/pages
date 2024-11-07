@@ -2,6 +2,7 @@
 title: "my first Linux rice"
 description: "this is how I riced Linux for the first time after switching from Windows."
 pubDate: "Oct 1 2023 23:30"
+updatedDate: "Nov 05 2024 09:46"
 ---
 
 I've been using Windows ever since secretly stealing my dad's laptop and sticked to it when i got my
