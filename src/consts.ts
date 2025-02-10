@@ -3,5 +3,5 @@
 
 export const DOMAIN = "bricked.dev";
 export const SITE_URI = `https://${DOMAIN}`;
-export const SITE_TITLE = "bricked";
-export const SITE_DESCRIPTION = "welcome to bricked's personal website!";
+export const SITE_TITLE = "Bricked";
+export const SITE_DESCRIPTION = "Welcome to bricked's personal website!";

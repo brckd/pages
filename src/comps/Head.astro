@@ -9,7 +9,6 @@ interface Props {
 let { title = "", description = SITE_DESCRIPTION } = Astro.props;
 if (title) title += " - ";
 title += SITE_TITLE;
-title = title.toLowerCase();
 ---
 
 <meta charset="utf-8" />

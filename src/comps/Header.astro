@@ -1,34 +1,91 @@
-<header>
-  <nav>
-    <a href="/">~</a>
-    <a href="/blog">blog</a>
-    <a href="/socials">socials</a>
-  </nav>
-  <style>
-    header {
-      width: 100%;
-      max-width: var(--size-content-width);
-      padding: var(--spacing-padding);
-      margin: 0 auto;
-    }
+---
+import { SITE_TITLE } from "@src/consts";
 
-    nav {
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-gap);
-    }
-  </style>
+let pathSegments: { name: string; path: string }[] = [];
+let path = "";
+for (const segment of Astro.url.pathname.split("/")) {
+  path += `${segment}/`;
+  pathSegments.push({
+    name: segment.replaceAll("-", " ").replace(/\w/, (c) => c.toUpperCase()),
+    path,
+  });
+}
+pathSegments[0].name = SITE_TITLE;
+if (pathSegments.at(-1)?.name === "") {
+  pathSegments.pop();
+}
+---
+
+<header>
+  <nav aria-label="breadcrumb" class="breadcrumb">
+    <ol>
+      {
+        pathSegments.slice(0, -1).map(({ name, path }) => (
+          <li>
+            <a href={path}>{name}</a>
+          </li>
+        ))
+      }
+      <li><span aria-current="page">{pathSegments.at(-1)?.name}</span></li>
+    </ol>
+  </nav>
+  <nav aria-label="links" class="links">
+    <a href="/blog">Blog</a>
+    <a href="/socials">Socials</a>
+  </nav>
 </header>
 
 <style>
   a {
     text-decoration: none;
   }
-  a::before {
-    content: "[ ";
+
+  header {
+    width: 100%;
+    max-width: var(--size-content-width);
+    padding: var(--spacing-padding);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
-  a::after {
-    content: " ]";
+
+  .links {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-gap);
+    font-weight: 600;
+  }
+
+  @media (max-width: 700px) {
+    .breadcrumb {
+      li:not(:first-child) {
+        display: none;
+      }
+
+      li::after {
+        visibility: hidden;
+      }
+    }
+  }
+
+  .breadcrumb {
+    ol {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      align-items: end;
+    }
+
+    li:not(:last-child)::after {
+      display: inline-block;
+      margin: 0 1ch;
+      content: ">";
+    }
+
+    li:first-child {
+      font-weight: 600;
+    }
   }
 </style>

@@ -1,6 +1,6 @@
 ---
-title: "undergoing an overhaul"
-description: "my online appearance and this website are undergoing an overhaul. here's what's new."
+title: "Undergoing an overhaul"
+description: "My online appearance and this website are undergoing an overhaul. Here's what's new."
 pubDate: "Nov 07 2024 23:26"
 ---
 

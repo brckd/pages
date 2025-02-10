@@ -1,6 +1,6 @@
 ---
-title: "my first Linux rice"
-description: "this is how I riced Linux for the first time after switching from Windows."
+title: "My first Linux rice"
+description: "This is how I riced Linux for the first time after switching from Windows."
 pubDate: "Oct 1 2023 23:30"
 updatedDate: "Nov 05 2024 09:46"
 ---

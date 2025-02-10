@@ -1,21 +1,17 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import spinning from "@assets/spinning.svg";
-import { Image } from "astro:assets";
 ---
 
-<Layout title="home">
-  <h1 slot="title">
-    <Image src={spinning} height={80} alt="My avatar spinning." id="spinning" />
-    this is me, bricked.
-  </h1>
+<Layout title="Bricked">
+  <h1 slot="title">Hi, this is me!</h1>
   <p>
-    I love using and contributing to open-source software. So far I have
-    specialized in NixOS configurations, accessible websites and Discord bots,
-    but I always love to learn something new! I'm also maintaining a <a
-      href="/blog">blog</a
-    > about my projects, personal updates and generally topics I'm interested in.
-    You can find me elsewhere through my <a href="/socials">socials</a>.
+    I'm bricked and I love using and contributing to open-source software. So
+    far I have specialized in NixOS configurations, accessible websites and
+    Discord bots, but I always love to learn something new! I'm also maintaining
+    a <a href="/blog">blog</a> about my projects, personal updates and generally
+    topics I'm interested in. You can find me elsewhere through my <a
+      href="/socials">socials</a
+    >.
   </p>
 </Layout>
 

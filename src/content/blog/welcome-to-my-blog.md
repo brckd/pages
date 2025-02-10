@@ -1,6 +1,6 @@
 ---
-title: "welcome to my blog"
-description: "this is an introduction to my new blog."
+title: "Welcome to my blog"
+description: "This is an introduction to my new blog."
 pubDate: "Aug 30 2023 14:45"
 ---
 

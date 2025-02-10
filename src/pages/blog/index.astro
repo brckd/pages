@@ -12,7 +12,7 @@ const formatDate = (date: Date) =>
   });
 ---
 
-<Layout title="blog">
+<Layout title="Blog">
   <div class="article-list">
     {
       posts.map((post) => (
@@ -42,8 +42,6 @@ const formatDate = (date: Date) =>
     gap: var(--spacing-gap);
   }
   article {
-    border: rgb(var(--color-highlight)) var(--size-border-width) solid;
-    padding: var(--spacing-padding);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap);

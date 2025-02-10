@@ -1,7 +1,8 @@
 :root {
-  --color-background: 16, 16, 20;
-  --color-text: 200, 200, 222;
-  --color-highlight: 22, 118, 232;
+  --color-base: 30, 30, 46;
+  --color-text: 205, 214, 244;
+  --color-blue: 137, 180, 250;
+  --color-main: var(--color-blue);
   --size-content-width: 800px;
   --size-border-width: 2px;
   --spacing-padding: 1em;
@@ -9,8 +10,14 @@
   --font-layout: "Hanken Grotesk Variable", sans-serif;
 }
 
+:root[data-theme~="latte"] {
+  --color-base: 239, 241, 245;
+  --color-text: 76, 79, 105;
+  --color-blue: 30, 102, 245;
+}
+
 body {
-  background: rgb(var(--color-background));
+  background: rgb(var(--color-base));
   color: rgb(var(--color-text));
   font-family: var(--font-layout);
   text-align: justify;
@@ -25,23 +32,10 @@ main {
   padding: var(--spacing-padding);
 }
 
-header,
-footer,
-h1,
 a {
-  color: rgb(var(--color-highlight));
-  text-shadow: 0 0 8em rgb(var(--color-highlight));
+  color: rgb(var(--color-main));
 }
 
 h1 {
   margin-top: 0;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  text-transform: lowercase;
 }
