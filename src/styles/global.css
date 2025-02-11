@@ -8,7 +8,9 @@
   --size-border-width: 2px;
   --spacing-padding: 1.2rem;
   --spacing-gap: 1rem;
-  --font-layout: "Hanken Grotesk Variable", sans-serif;
+  --radius-text: 0.3em;
+  --font-layout: "Lexend Variable", sans-serif;
+  --font-code: "JetBrains Mono Variable", monospace;
 }
 
 :root[data-theme~="latte"] {
@@ -39,4 +41,19 @@ a {
 
 h1 {
   margin-top: 0;
+}
+
+pre,
+code {
+  background: rgb(var(--color-mantle));
+  border-radius: var(--radius-text);
+  font-family: var(--font-code);
+}
+
+pre {
+  padding: var(--spacing-padding);
+}
+
+code {
+  padding: 0 0.3em;
 }
