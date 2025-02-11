@@ -1,12 +1,13 @@
 :root {
   --color-base: 30, 30, 46;
+  --color-mantle: 24, 24, 37;
   --color-text: 205, 214, 244;
   --color-blue: 137, 180, 250;
   --color-main: var(--color-blue);
   --size-content-width: 800px;
   --size-border-width: 2px;
-  --spacing-padding: 1em;
-  --spacing-gap: 1em;
+  --spacing-padding: 1.2rem;
+  --spacing-gap: 1rem;
   --font-layout: "Hanken Grotesk Variable", sans-serif;
 }
 
@@ -21,7 +22,7 @@ body {
   color: rgb(var(--color-text));
   font-family: var(--font-layout);
   text-align: justify;
-  font-size: 1.5em;
+  font-size: 1.3rem;
   margin: 0;
 }
 
