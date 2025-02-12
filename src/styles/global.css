@@ -57,3 +57,17 @@ pre {
 code {
   padding: 0 0.3em;
 }
+
+dl {
+  display: grid;
+  gap: 0.5em var(--spacing-gap);
+  grid-template-columns: max-content;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  grid-column-start: 2;
+}

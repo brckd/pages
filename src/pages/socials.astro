@@ -10,53 +10,35 @@ const mail = "hxello@brickxed.dexv".replaceAll("x", "");
 
   <h2>Contact</h2>
   <p>Say hi to me here!</p>
-  <table>
-    <tr>
-      <td>Discord</td>
-      <td><a href="https://discord.com/users/691572882148425809">@brckd</a></td>
-    </tr>
-    <tr>
-      <td>Matrix</td>
-      <td>
-        <a href="https://matrix.to/#/@bricked:nope.chat">@bricked:nope.chat</a>
-      </td>
-    </tr>
-    <tr>
-      <td>Mastodon</td>
-      <td><a href="https://tilde.zone/@bricked">@bricked@tilde.zone</a></td>
-    </tr>
-    <tr>
-      <td>Lemmy</td>
-      <td><a href="https://feddit.org/u/bricked">@bricked@feddit.org</a></td>
-    </tr>
-    <tr>
-      <td>Email</td>
-      <td>
-        <a href={`mailto:${mail}`} set:text={mail} />
-      </td>
-    </tr>
-  </table>
+  <dl>
+    <dt>Discord</dt>
+    <dd><a href="https://discord.com/users/691572882148425809">@brckd</a></dd>
+    <dt>Matrix</dt>
+    <dd>
+      <a href="https://matrix.to/#/@bricked:nope.chat">@bricked:nope.chat</a>
+    </dd>
+    <dt>Mastodon</dt>
+    <dd><a href="https://tilde.zone/@bricked">@bricked@tilde.zone</a></dd>
+    <dt>Lemmy</dt>
+    <dd><a href="https://feddit.org/u/bricked">@bricked@feddit.org</a></dd>
+    <dt>Email</dt>
+    <dd>
+      <a href={`mailto:${mail}`} set:text={mail} />
+    </dd>
+  </dl>
 
   <h2>Code</h2>
   <p>Find my newest projects here!</p>
-  <table>
-    <tr>
-      <td>GitHub</td>
-      <td><a href="https://github.com/brckd">@brckd</a></td>
-    </tr>
-    <tr>
-      <td>Codeberg</td>
-      <td><a href="https://codeberg.org/bricked">@bricked</a></td>
-    </tr>
-    <tr>
-      <td>GitLab</td>
-      <td><a href="https://gitlab.com/bricked">@bricked</a></td>
-    </tr>
-    <tr>
-      <td>NPM</td>
-      <td><a href="https://npmjs.org/~bricked">@bricked</a></td>
-    </tr>
-  </table>
+  <dl>
+    <dt>GitHub</dt>
+    <dd><a href="https://github.com/brckd">@brckd</a></dd>
+    <dt>Codeberg</dt>
+    <dd><a href="https://codeberg.org/bricked">@bricked</a></dd>
+    <dt>GitLab</dt>
+    <dd><a href="https://gitlab.com/bricked">@bricked</a></dd>
+    <dt>NPM</dt>
+    <dd><a href="https://npmjs.org/~bricked">@bricked</a></dd>
+  </dl>
 </Layout>
 
 <style>
