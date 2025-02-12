@@ -4,7 +4,7 @@
 [![semantic-release: angular](https://img.shields.io/badge/semantic--release-angular-e10079?logo=semantic-release)](https://github.com/semantic-release/semantic-release)
 [![version](https://img.shields.io/npm/v/@bricked/pages?color=crimson&logo=npm)](https://www.npmjs.com/package/@bricked/pages)
 
-My very own site on the interwebz.
+My little island on the ocean of websites.
 
 ## Deploy
 
