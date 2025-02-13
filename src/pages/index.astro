@@ -1,25 +1,50 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+import waving from "@assets/illustrations/waving.png";
 ---
 
 <Layout title="Bricked">
-  <h1 slot="title">I am bricked</h1>
-  <p>
-    Hay, I'm <strong>bricked</strong> and I love using and contributing to open-source
-    software. So far I have specialized in NixOS configurations, accessible websites
-    and Discord bots, but I always love to learn something new! I'm also maintaining
-    a <a href="/blog">blog</a> about my projects, personal updates and generally
-    topics I'm interested in. Feel free to hit me up on my <a href="/socials"
-      >socials</a
-    >!
-  </p>
+  <Fragment slot="title"></Fragment>
+  <div class="grid">
+    <h1>I am bricked</h1>
+    <Image
+      class="illustration"
+      src={waving}
+      alt="Bricked waving."
+      width={400}
+    />
+    <p>
+      Hay, I'm <strong>bricked</strong> and I love using and contributing to open-source
+      software. So far I have specialized in NixOS configurations, accessible websites
+      and Discord bots, but I always love to learn something new! I'm also maintaining
+      a <a href="/blog">blog</a> about my projects, personal updates and generally
+      topics I'm interested in. Feel free to hit me up on my <a href="/socials"
+        >socials</a
+      >!
+    </p>
+  </div>
 </Layout>
 
 <style>
-  h1 {
-    display: flex;
+  .grid {
+    display: grid;
+    gap: var(--spaing-gap);
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5em;
+
+    .illustration {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .grid {
+      display: flex;
+      flex-direction: column;
+      align-items: unset;
+    }
   }
 </style>
