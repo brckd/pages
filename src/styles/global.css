@@ -30,17 +30,13 @@ body {
 
 main {
   max-width: var(--size-content-width);
-  min-height: calc(100vh - 6em);
+  min-height: calc(100vh - 8em);
   margin: 0 auto;
   padding: var(--spacing-padding);
 }
 
 a {
   color: rgb(var(--color-main));
-}
-
-h1 {
-  margin-top: 0;
 }
 
 pre,
