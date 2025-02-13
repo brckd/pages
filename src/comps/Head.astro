@@ -1,5 +1,7 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION } from "@src/consts";
+import { getImage } from "astro:assets";
+import icon from "@assets/icons/icon.png";
 
 interface Props {
   title?: string;
@@ -9,6 +11,11 @@ interface Props {
 let { title = "", description = SITE_DESCRIPTION } = Astro.props;
 if (title) title += " - ";
 title += SITE_TITLE;
+
+const image = await getImage({
+  src: icon,
+  height: 1200,
+});
 ---
 
 <meta charset="utf-8" />
@@ -25,6 +32,7 @@ title += SITE_TITLE;
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={SITE_TITLE} />
+<meta property="og:image" content={image.src} />
 
 <meta property="twitter:card" content="summary" />
 <meta property="twitter:url" content={Astro.url} />
