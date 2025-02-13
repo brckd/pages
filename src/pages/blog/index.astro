@@ -16,12 +16,12 @@ const formatDate = (date: Date) =>
   <div class="article-list">
     {
       posts.map((post) => (
-        <article>
-          <a href={`/blog/${post.slug}/`}>
+        <article class="article-card">
+          <a href={`/blog/${post.slug}/`} class="article-card-link">
             <h2>{post.data.title}</h2>
           </a>
           {post.data.description}
-          <footer>
+          <footer class="article-card-footer">
             published {formatDate(post.data.pubDate)}
             {post.data.updatedDate &&
               `, last updated ${formatDate(post.data.updatedDate)}`}
@@ -41,12 +41,15 @@ const formatDate = (date: Date) =>
     flex-direction: column;
     gap: var(--spacing-gap);
   }
-  article {
+  .article-card {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap);
   }
-  footer {
+  .article-card-footer {
     font-size: 0.8em;
+  }
+  .article-card-link {
+    text-decoration: none;
   }
 </style>
