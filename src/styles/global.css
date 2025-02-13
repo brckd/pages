@@ -8,8 +8,9 @@
   --size-border-width: 2px;
   --spacing-padding: 1.2rem;
   --spacing-gap: 1rem;
-  --radius-text: 0.3em;
-  --font-layout: "Lexend Variable", sans-serif;
+  --radius-layout: 0.5em;
+  --radius-content: 0.3em;
+  --font-content: "Lexend Variable", sans-serif;
   --font-code: "JetBrains Mono Variable", monospace;
 }
 
@@ -22,7 +23,7 @@
 body {
   background: rgb(var(--color-base));
   color: rgb(var(--color-text));
-  font-family: var(--font-layout);
+  font-family: var(--font-content);
   text-align: justify;
   font-size: 1.3rem;
   margin: 0;
@@ -42,7 +43,7 @@ a {
 pre,
 code {
   background: rgb(var(--color-mantle));
-  border-radius: var(--radius-text);
+  border-radius: var(--radius-content);
   font-family: var(--font-code);
 }
 

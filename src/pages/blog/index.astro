@@ -17,12 +17,12 @@ const formatDate = (date: Date) =>
     {
       posts.map((post) => (
         <article class="article-card">
-          <a href={`/blog/${post.slug}/`} class="article-card-link">
+          <a href={`/blog/${post.slug}/`} class="article-link">
             <h2>{post.data.title}</h2>
           </a>
           {post.data.description}
-          <footer class="article-card-footer">
-            published {formatDate(post.data.pubDate)}
+          <footer class="article-footer">
+            Published {formatDate(post.data.pubDate)}
             {post.data.updatedDate &&
               `, last updated ${formatDate(post.data.updatedDate)}`}
           </footer>
@@ -45,11 +45,14 @@ const formatDate = (date: Date) =>
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap);
+    background: rgb(var(--color-mantle));
+    padding: var(--spacing-padding);
+    border-radius: var(--radius-layout);
   }
-  .article-card-footer {
-    font-size: 0.8em;
+  .article-footer {
+    font-size: smaller;
   }
-  .article-card-link {
+  .article-link {
     text-decoration: none;
   }
 </style>

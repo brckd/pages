@@ -22,8 +22,8 @@ const formatDate = (date: Date) =>
 ---
 
 <Layout {...post.data}>
-  <header>
-    published {formatDate(post.data.pubDate)}{
+  <header class="article-header">
+    Published {formatDate(post.data.pubDate)}{
       post.data.updatedDate &&
         `, last updated ${formatDate(post.data.updatedDate)}`
     }
@@ -32,3 +32,9 @@ const formatDate = (date: Date) =>
     <Content />
   </article>
 </Layout>
+
+<style>
+  .article-header {
+    font-size: smaller;
+  }
+</style>
