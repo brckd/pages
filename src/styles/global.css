@@ -2,6 +2,7 @@
   --color-base: 30, 30, 46;
   --color-mantle: 24, 24, 37;
   --color-text: 205, 214, 244;
+  --color-subtext1: 186, 194, 222;
   --color-blue: 137, 180, 250;
   --color-main: var(--color-blue);
   --size-content-width: 800px;
@@ -16,6 +17,8 @@
 
 :root[data-theme~="latte"] {
   --color-base: 239, 241, 245;
+  --color-mantle: 230, 233, 239;
+  --color-subtext1: 92, 95, 119;
   --color-text: 76, 79, 105;
   --color-blue: 30, 102, 245;
 }
