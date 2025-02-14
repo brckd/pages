@@ -67,4 +67,12 @@ dt {
 
 dd {
   grid-column-start: 2;
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  dl {
+    display: flex;
+    flex-direction: column;
+  }
 }
