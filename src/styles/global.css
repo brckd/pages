@@ -24,7 +24,6 @@ body {
   background: rgb(var(--color-base));
   color: rgb(var(--color-text));
   font-family: var(--font-content);
-  text-align: justify;
   font-size: 1.3rem;
   margin: 0;
 }
@@ -34,6 +33,10 @@ main {
   min-height: calc(100vh - 8em);
   margin: 0 auto;
   padding: var(--spacing-padding);
+}
+
+p {
+  text-align: justify;
 }
 
 a {
