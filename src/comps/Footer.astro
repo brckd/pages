@@ -1,4 +1,26 @@
-<footer><div class="content">&copy; 2023 - 2025 bricked</div></footer>
+---
+import Webring from "@comps/Webring.astro";
+---
+
+<footer>
+  <div class="content">
+    <span>&copy; 2023 - 2025 bricked</span>
+    <div class="webrings">
+      <Webring
+        name="Catppuccin"
+        baseURL="https://ctp-webr.ing/"
+        prevURL="https://ctp-webr.ing/bricked/prev"
+        nextURL="https://ctp-webr.ing/bricked/next"
+      />
+      <Webring
+        name="Nix"
+        baseURL="https://nixwebr.ing/"
+        prevURL="https://nixwebr.ing/prev/bricked"
+        nextURL="https://nixwebr.ing/next/bricked"
+      />
+    </div>
+  </div>
+</footer>
 <style>
   footer {
     width: 100%;
@@ -10,9 +32,20 @@
 
   .content {
     max-width: var(--size-content-width);
-    width: 100%;
     text-align: center;
+    width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--spacing-gap);
+  }
+
+  .webrings {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-gap);
   }
 </style>

@@ -1,0 +1,37 @@
+---
+interface Props {
+  slug?: string;
+  name: string;
+  baseURL: URL | string;
+  prevURL: URL | string;
+  nextURL: URL | string;
+}
+
+let { slug, name, baseURL, prevURL, nextURL } = Astro.props;
+slug ??= name.toLowerCase().replace(" ", "-");
+---
+
+<div class="webring" id={`webring-${slug}`}>
+  <a class="webring-prev" aria-label="previous" href={prevURL}>&lt;</a>
+  <a class="webring-base" href={baseURL}>{name} Webring</a>
+  <a class="webring-next" aria-label="next" href={nextURL}>&gt;</a>
+</div>
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  .webring-base {
+    flex: 1;
+  }
+
+  .webring {
+    display: flex;
+    background: rgb(var(--color-crust));
+    gap: var(--spacing-gap);
+    padding: var(--spacing-padding);
+    border-radius: var(--radius-layout);
+    justify-content: space-between;
+  }
+</style>
