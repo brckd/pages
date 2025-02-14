@@ -22,9 +22,12 @@ const formatDate = (date: Date) =>
           </a>
           {post.data.description}
           <footer class="article-footer">
-            Published {formatDate(post.data.pubDate)}
-            {post.data.updatedDate &&
-              `, last updated ${formatDate(post.data.updatedDate)}`}
+            <time
+              class="article-pubdate"
+              datetime={post.data.pubDate.toISOString()}
+            >
+              {formatDate(post.data.pubDate)}
+            </time>
           </footer>
         </article>
       ))
@@ -49,7 +52,7 @@ const formatDate = (date: Date) =>
     padding: var(--spacing-padding);
     border-radius: var(--radius-layout);
   }
-  .article-footer {
+  .article-pubdate {
     font-size: smaller;
   }
   .article-link {

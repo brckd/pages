@@ -22,19 +22,18 @@ const formatDate = (date: Date) =>
 ---
 
 <Layout {...post.data}>
-  <header class="article-header">
-    Published {formatDate(post.data.pubDate)}{
-      post.data.updatedDate &&
-        `, last updated ${formatDate(post.data.updatedDate)}`
-    }
-  </header>
   <article>
+    <header class="article-header">
+      <time class="article-pubdate" datetime={post.data.pubDate.toISOString()}
+        >{formatDate(post.data.pubDate)}</time
+      >
+    </header>
     <Content />
   </article>
 </Layout>
 
 <style>
-  .article-header {
+  .article-pubdate {
     font-size: smaller;
   }
 </style>
