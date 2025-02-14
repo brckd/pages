@@ -1,3 +1,3 @@
 # [bricked.dev](https://bricked.dev)
 
-My little island on the ocean of websites.
+My personal website and [blog](https://bricked.dev/blog). Built with [Astro](https://astro.build) and almost no client side JavaScript :rocket:
