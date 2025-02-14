@@ -1,0 +1,27 @@
+---
+import Webring from "@comps/Webring.astro";
+---
+
+<div class="webrings">
+  <Webring
+    name="Catppuccin"
+    baseURL="https://ctp-webr.ing/"
+    prevURL="https://ctp-webr.ing/bricked/prev"
+    nextURL="https://ctp-webr.ing/bricked/next"
+  />
+  <Webring
+    name="Nix"
+    baseURL="https://nixwebr.ing/"
+    prevURL="https://nixwebr.ing/prev/bricked"
+    nextURL="https://nixwebr.ing/next/bricked"
+  />
+</div>
+
+<style>
+  .webrings {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: var(--spacing-gap);
+  }
+</style>
