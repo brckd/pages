@@ -1,5 +1,4 @@
 import vercel from "@astrojs/vercel";
-import mdx from "@astrojs/mdx";
 import { defineConfig } from "astro/config";
 import { SITE_URI } from "./src/consts";
 import favicons from "astro-favicons";
@@ -13,7 +12,7 @@ export default defineConfig({
       name: "Bricked",
       short_name: "Bricked",
     }),
-    mdx(mdxConfig),
   ],
+  markdown: mdxConfig,
   adapter: import.meta.env.PROD ? vercel() : undefined,
 });

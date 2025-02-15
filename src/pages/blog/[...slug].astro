@@ -14,7 +14,7 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { pubDate, tags } = post.data;
-const { Content } = await post.render();
+const { Content, remarkPluginFrontmatter } = await post.render();
 
 const formatDate = (date: Date) =>
   date.toLocaleString("en-GB", {
@@ -40,6 +40,7 @@ const formatDate = (date: Date) =>
         }
       </ul>
       <div class="article-info">
+        <span>{remarkPluginFrontmatter.readingTime.text}</span>, published
         <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
       </div>
     </header>
@@ -55,8 +56,6 @@ const formatDate = (date: Date) =>
   }
 
   .article-info {
-    display: flex;
-    flex-wrap: wrap;
     font-size: smaller;
     color: rgb(var(--color-subtext1));
   }

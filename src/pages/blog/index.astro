@@ -61,7 +61,7 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
 
   <div class="article-list">
     {
-      filteredPosts.map((post) => (
+      filteredPosts.map(async (post) => (
         <article class="article-card">
           <ul class="article-tags">
             {post.data.tags
@@ -92,6 +92,10 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
           </a>
           {post.data.description}
           <footer class="article-info">
+            <span>
+              {(await post.render()).remarkPluginFrontmatter.readingTime.text}
+            </span>
+            , published
             <time datetime={post.data.pubDate.toISOString()}>
               {formatDate(post.data.pubDate)}
             </time>
@@ -128,8 +132,6 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
   }
 
   .article-info {
-    display: flex;
-    flex-wrap: wrap;
     font-size: smaller;
     color: rgb(var(--color-subtext1));
   }
