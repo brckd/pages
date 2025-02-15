@@ -1,6 +1,7 @@
 ---
-import { SITE_TITLE, SITE_DESCRIPTION } from "@src/consts";
+import { SITE_TITLE, SITE_DESCRIPTION, THEME_COLOR } from "@src/consts";
 import { getImage } from "astro:assets";
+import { type GetImageResult } from "astro/dist/assets/types";
 import icon from "@assets/icons/icon.png";
 
 interface Props {
@@ -8,23 +9,41 @@ interface Props {
   description?: string;
 }
 
-let { title = "", description = SITE_DESCRIPTION } = Astro.props;
-if (title) title += " - ";
-title += SITE_TITLE;
+const { title = "", description = SITE_DESCRIPTION } = Astro.props;
+let longTitle = title;
+if (longTitle) longTitle += " - ";
+longTitle += SITE_TITLE;
 
 const image = await getImage({
   src: icon,
   height: 1200,
 });
+
+function getIconAttributes(icon: GetImageResult) {
+  return {
+    src: icon.src,
+    type: `image/${icon.options.format}`,
+    sizes: `${icon.options.width}x${icon.options.height}`,
+  };
+}
+
+const iconSizes = [192, 512];
+const icons = await Promise.all(
+  iconSizes.map((size) =>
+    getImage({ src: icon, width: size, height: size, format: "png" }),
+  ),
+);
 ---
 
+<!-- General -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
 
-<title>{title}</title>
+<title>{longTitle}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="theme-color" content={THEME_COLOR} />
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -39,7 +58,7 @@ const image = await getImage({
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 
-<meta name="theme-color" content="#1676e8" />
+<!-- Social -->
 <link rel="me" href="https://tilde.zone/@bricked" />
 <link
   rel="alternate"
@@ -47,3 +66,14 @@ const image = await getImage({
   title={SITE_TITLE}
   href={new URL("/blog/rss.xml", Astro.site)}
 />
+
+<!-- Style -->
+<link rel="manifest" href="/manifest.webmanifest" />
+<link
+  rel="apple-touch-icon"
+  {...getIconAttributes(
+    await getImage({ src: icon, format: "png", width: 180, height: 180 }),
+  )}
+/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+{icons.map((icon) => <link rel="icon" {...getIconAttributes(icon)} />)}
