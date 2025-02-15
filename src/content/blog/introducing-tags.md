@@ -1,0 +1,12 @@
+---
+title: "Introducing tags"
+description: "This blog now supports tags so you can browse it easier."
+pubDate: "Feb 15 2025 18:00+1"
+tags: [meta]
+---
+
+Finally, I added tags to the blog! Just click on any tag and you will see all blog posts that have it.
+
+I actually wanted to implement this feature ever since this blog existed. This is the first update to the blog after [I teased a transformation of this website](/blog/the-glow-up-is-real/) and I'm now confident that more exciting updates will follow!
+
+That's all from this short update, but stay tuned for more updates in the following week :)
