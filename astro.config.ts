@@ -1,8 +1,11 @@
-import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import { SITE_URI } from "./src/consts";
 import favicons from "astro-favicons";
 import mdxConfig from "./src/lib/markdownConfig";
+
+import vercel from "@astrojs/vercel";
+import netlify from "@astrojs/netlify";
+const adapter: string = import.meta.env.ADAPTER?.toLowerCase();
 
 export default defineConfig({
   site: SITE_URI,
@@ -14,5 +17,10 @@ export default defineConfig({
     }),
   ],
   markdown: mdxConfig,
-  adapter: import.meta.env.PROD ? vercel({ edgeMiddleware: true }) : undefined,
+  adapter:
+    adapter === "netlify"
+      ? netlify()
+      : adapter === "vercel"
+        ? vercel()
+        : undefined,
 });
