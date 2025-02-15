@@ -3,6 +3,7 @@ title: "The glow up is real"
 description: "After a long time I have settled on a new online presence. This is surely the beginning of something."
 pubDate: "Feb 14 2025 23:00+1"
 banner: "@assets/illustrations/waving"
+tags: [personal, meta]
 ---
 
 In my [last blog entry](../undergoing-an-overhaul) I announced that my online presence would adapt a more minimalist look. But over time I felt like it just looked too impersonal. So basically, I have undergone the [oversimplified logo](https://knowyourmeme.com/memes/oversimplified-logo) cycle. But this will come to an end now, I promise for real this time.

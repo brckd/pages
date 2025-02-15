@@ -11,4 +11,5 @@ export default defineConfig({
       short_name: "Bricked",
     }),
   ],
+  output: "server",
 });

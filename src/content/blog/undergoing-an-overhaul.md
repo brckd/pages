@@ -2,6 +2,7 @@
 title: "Undergoing an overhaul"
 description: "My online appearance and this website are undergoing an overhaul. Here's what's new."
 pubDate: "Nov 07 2024 23:26"
+tags: [personal, meta]
 ---
 
 For a couple of days now, this website looks different from before. This is because, after the first version of the website introduced in [my first post](../welcome-to-my-blog), I finally got to style the website completely myself. It may not look as aesthetically pleasing as before, but it's something I can work with.

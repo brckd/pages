@@ -3,6 +3,7 @@ title: "Celebrating a new domain"
 description: "Say hi to bricked.dev!"
 pubDate: "Sep 01 2023 23:00"
 updatedDate: "Nov 04 2024 22:36"
+tags: [meta, domains]
 ---
 
 Following

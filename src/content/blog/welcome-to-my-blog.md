@@ -2,6 +2,7 @@
 title: "Welcome to my blog"
 description: "This is an introduction to my new blog."
 pubDate: "Aug 30 2023 14:45"
+tags: [meta]
 ---
 
 Hi everyone, this is my new blog! Expect irregular posts about topics I'm interested in, like tech

@@ -1,5 +1,6 @@
 ---
 import Layout from "@layouts/Layout.astro";
+import Tag from "@comps/Tag.astro";
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog")).sort(
@@ -10,16 +11,80 @@ const formatDate = (date: Date) =>
     dateStyle: "medium",
     timeStyle: "short",
   });
+
+const currentTags = new Set(
+  Astro.url.searchParams
+    .get("tags")
+    ?.split(";")
+    .filter((tag) => tag) ?? [],
+);
+const otherTags = new Set(posts.flatMap((post) => post.data.tags)).difference(
+  currentTags,
+);
+const filteredPosts = currentTags.size
+  ? posts.filter((post) => currentTags.isSubsetOf(new Set(post.data.tags)))
+  : posts;
+
+const withoutTag = (tag: string) =>
+  `?tags=${[...currentTags.difference(new Set([tag]))].join(";")}`;
+const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
 ---
 
 <Layout title="Blog">
+  <div class="tags">
+    {
+      currentTags.size ? (
+        <ul class="current-tags">
+          {[...currentTags].map((tag) => (
+            <li class="tag">
+              <Tag selected={true}>
+                <a class="tag-link" href={withoutTag(tag)}>
+                  {tag}
+                </a>
+              </Tag>
+            </li>
+          ))}
+        </ul>
+      ) : undefined
+    }
+    {
+      otherTags.size ? (
+        <ul class="other-tags" hidden={!otherTags.size}>
+          {[...otherTags].map((tag) => (
+            <li class="tag">
+              <Tag selected={false}>
+                <a class="tag-link" href={withTag(tag)}>
+                  {tag}
+                </a>
+              </Tag>
+            </li>
+          ))}
+        </ul>
+      ) : undefined
+    }
+  </div>
+
   <div class="article-list">
     {
-      posts.map((post) => (
+      filteredPosts.map((post) => (
         <article class="article-card">
           <a href={`/blog/${post.slug}/`} class="article-link">
             <h2>{post.data.title}</h2>
           </a>
+          <ul class="article-tags">
+            {post.data.tags.map((tag) => (
+              <li class="tag">
+                <Tag selected={currentTags.has(tag)}>
+                  <a
+                    class="tag-link"
+                    href={currentTags.has(tag) ? withoutTag(tag) : withTag(tag)}
+                  >
+                    {tag}
+                  </a>
+                </Tag>
+              </li>
+            ))}
+          </ul>
           {post.data.description}
           <footer class="article-footer">
             <time
@@ -39,11 +104,14 @@ const formatDate = (date: Date) =>
   h2 {
     margin: 0;
   }
+
   .article-list {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap);
+    margin-top: var(--spacing-gap);
   }
+
   .article-card {
     display: flex;
     flex-direction: column;
@@ -51,12 +119,39 @@ const formatDate = (date: Date) =>
     background: rgb(var(--color-mantle));
     padding: var(--spacing-padding);
     border-radius: var(--radius-layout);
+
+    > :global(*) {
+      --color-mantle: var(--color-crust);
+    }
   }
+
   .article-pubdate {
     font-size: smaller;
     color: rgb(var(--color-subtext1));
   }
+
   .article-link {
+    text-decoration: none;
+  }
+
+  .article-tags,
+  .current-tags,
+  .other-tags {
+    all: unset;
+    display: flex;
+    gap: var(--spacing-gap);
+
+    li {
+      all: unset;
+    }
+  }
+
+  .tags {
+    display: flex;
+    gap: var(--spacing-gap);
+  }
+
+  .tag-link {
     text-decoration: none;
   }
 </style>
