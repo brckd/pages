@@ -6,6 +6,7 @@ import mdxConfig from "./src/lib/markdownConfig";
 import vercel from "@astrojs/vercel";
 import netlify from "@astrojs/netlify";
 const adapter: string = import.meta.env.ADAPTER?.toLowerCase();
+console.log("ADAPTER:", adapter);
 
 export default defineConfig({
   site: SITE_URI,
