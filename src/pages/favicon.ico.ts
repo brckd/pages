@@ -1,10 +1,12 @@
 import type { APIRoute } from "astro";
 import sharp from "sharp";
 import ico from "sharp-ico";
-import icon from "@assets/icons/icon.png";
 
 export const GET: APIRoute = async () => {
-  const buffer = await sharp(icon.src).resize(32).toFormat("png").toBuffer();
+  const buffer = await sharp("src/assets/icons/icon.png")
+    .resize(32)
+    .toFormat("png")
+    .toBuffer();
   const icoBuffer = ico.encode([buffer]);
 
   return new Response(icoBuffer, {
