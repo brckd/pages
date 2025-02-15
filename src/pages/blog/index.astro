@@ -28,7 +28,7 @@ const filteredPosts = currentTags.size
   : posts;
 
 const withoutTag = (tag: string) =>
-  `?tags=${[...currentTags.difference(new Set([tag]))].join(";")}`;
+  `/blog/?tags=${[...currentTags.difference(new Set([tag]))].join(";")}`;
 const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
 ---
 
@@ -37,7 +37,7 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
     {
       [...currentTags].map((tag) => (
         <li class="tag">
-          <Tag selected={true}>
+          <Tag selected>
             <a class="tag-link" href={withoutTag(tag)}>
               {tag}
             </a>
@@ -63,29 +63,36 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
     {
       filteredPosts.map((post) => (
         <article class="article-card">
+          <ul class="article-tags">
+            {post.data.tags
+              .filter((tag) => currentTags.has(tag))
+              .map((tag) => (
+                <li class="tag">
+                  <Tag selected>
+                    <a class="tag-link" href={withoutTag(tag)}>
+                      {tag}
+                    </a>
+                  </Tag>
+                </li>
+              ))}
+            {post.data.tags
+              .filter((tag) => !currentTags.has(tag))
+              .map((tag) => (
+                <li class="tag">
+                  <Tag>
+                    <a class="tag-link" href={withTag(tag)}>
+                      {tag}
+                    </a>
+                  </Tag>
+                </li>
+              ))}
+          </ul>
           <a href={`/blog/${post.slug}`} class="article-link">
             <h2>{post.data.title}</h2>
           </a>
-          <ul class="article-tags">
-            {post.data.tags.map((tag) => (
-              <li class="tag">
-                <Tag selected={currentTags.has(tag)}>
-                  <a
-                    class="tag-link"
-                    href={currentTags.has(tag) ? withoutTag(tag) : withTag(tag)}
-                  >
-                    {tag}
-                  </a>
-                </Tag>
-              </li>
-            ))}
-          </ul>
           {post.data.description}
-          <footer class="article-footer">
-            <time
-              class="article-pubdate"
-              datetime={post.data.pubDate.toISOString()}
-            >
+          <footer class="article-info">
+            <time datetime={post.data.pubDate.toISOString()}>
               {formatDate(post.data.pubDate)}
             </time>
           </footer>
@@ -120,7 +127,9 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
     }
   }
 
-  .article-pubdate {
+  .article-info {
+    display: flex;
+    flex-wrap: wrap;
     font-size: smaller;
     color: rgb(var(--color-subtext1));
   }

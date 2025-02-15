@@ -31,7 +31,7 @@ const formatDate = (date: Date) =>
           tags.map((tag) => (
             <li class="tag">
               <Tag>
-                <a class="tag-link" href={`../?tags=${tag}`}>
+                <a class="tag-link" href={`/blog/?tags=${tag}`}>
                   {tag}
                 </a>
               </Tag>
@@ -39,9 +39,9 @@ const formatDate = (date: Date) =>
           ))
         }
       </ul>
-      <time class="article-pubdate" datetime={pubDate.toISOString()}
-        >{formatDate(pubDate)}</time
-      >
+      <div class="article-info">
+        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+      </div>
     </header>
     <Content />
   </article>
@@ -54,7 +54,9 @@ const formatDate = (date: Date) =>
     gap: var(--spacing-gap);
   }
 
-  .article-pubdate {
+  .article-info {
+    display: flex;
+    flex-wrap: wrap;
     font-size: smaller;
     color: rgb(var(--color-subtext1));
   }
