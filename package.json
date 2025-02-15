@@ -39,6 +39,8 @@
     "@fontsource-variable/jetbrains-mono": "^5.1.2",
     "@fontsource-variable/lexend": "^5.1.2",
     "@mdx-js/mdx": "^3.1.0",
+    "@types/mdast": "^4.0.4",
+    "@types/vfile": "^4.0.0",
     "astro": "^5.2.5",
     "astro-favicons": "^3.1.5",
     "autoprefixer": "^10.4.20",
