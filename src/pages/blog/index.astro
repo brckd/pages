@@ -3,6 +3,8 @@ import Layout from "@layouts/Layout.astro";
 import Tag from "@comps/Tag.astro";
 import { getCollection } from "astro:content";
 
+export const prerender = false;
+
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );

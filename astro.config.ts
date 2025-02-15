@@ -14,6 +14,5 @@ export default defineConfig({
     }),
   ],
 
-  output: "server",
   adapter: import.meta.env.PROD ? vercel() : undefined,
 });
