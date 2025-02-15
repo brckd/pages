@@ -33,38 +33,31 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
 ---
 
 <Layout title="Blog">
-  <div class="tags">
+  <ul class="tags">
     {
-      currentTags.size ? (
-        <ul class="current-tags">
-          {[...currentTags].map((tag) => (
-            <li class="tag">
-              <Tag selected={true}>
-                <a class="tag-link" href={withoutTag(tag)}>
-                  {tag}
-                </a>
-              </Tag>
-            </li>
-          ))}
-        </ul>
-      ) : undefined
+      [...currentTags].map((tag) => (
+        <li class="tag">
+          <Tag selected={true}>
+            <a class="tag-link" href={withoutTag(tag)}>
+              {tag}
+            </a>
+          </Tag>
+        </li>
+      ))
     }
+
     {
-      otherTags.size ? (
-        <ul class="other-tags" hidden={!otherTags.size}>
-          {[...otherTags].map((tag) => (
-            <li class="tag">
-              <Tag selected={false}>
-                <a class="tag-link" href={withTag(tag)}>
-                  {tag}
-                </a>
-              </Tag>
-            </li>
-          ))}
-        </ul>
-      ) : undefined
+      [...otherTags].map((tag) => (
+        <li class="tag">
+          <Tag selected={false}>
+            <a class="tag-link" href={withTag(tag)}>
+              {tag}
+            </a>
+          </Tag>
+        </li>
+      ))
     }
-  </div>
+  </ul>
 
   <div class="article-list">
     {
@@ -136,9 +129,8 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
     text-decoration: none;
   }
 
-  .article-tags,
-  .current-tags,
-  .other-tags {
+  .tags,
+  .article-tags {
     all: unset;
     display: flex;
     gap: var(--spacing-gap);
@@ -147,11 +139,6 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
     li {
       all: unset;
     }
-  }
-
-  .tags {
-    display: flex;
-    gap: var(--spacing-gap);
   }
 
   .tag-link {
