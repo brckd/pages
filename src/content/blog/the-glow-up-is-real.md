@@ -6,7 +6,7 @@ banner: "@assets/illustrations/waving"
 tags: [personal, meta]
 ---
 
-In my [last blog entry](../undergoing-an-overhaul) I announced that my online presence would adapt a more minimalist look. But over time I felt like it just looked too impersonal. So basically, I have undergone the [oversimplified logo](https://knowyourmeme.com/memes/oversimplified-logo) cycle. But this will come to an end now, I promise for real this time.
+In my [last blog entry](/blog/undergoing-an-overhaul) I announced that my online presence would adapt a more minimalist look. But over time I felt like it just looked too impersonal. So basically, I have undergone the [oversimplified logo](https://knowyourmeme.com/memes/oversimplified-logo) cycle. But this will come to an end now, I promise for real this time.
 
 On [this website](/) and all my [socials](/socials) you will from now on be greeted by a cute looking digital drawing of a lego brick. It's conceptually and design-wise very similar to my previous profile picture, but got those extra cute and personal touches :)
 

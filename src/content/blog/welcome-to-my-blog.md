@@ -25,5 +25,5 @@ day!
 ## More to come
 
 I already have some plans for improving the website and the blog, which will appear in small updates
-while I'm adding more content. So don't forget to subscibe to the [RSS feed](../rss.xml) to get
+while I'm adding more content. So don't forget to subscibe to the [RSS feed](/blog/rss.xml) to get
 notified about new blog posts - Stay tuned!
