@@ -92,10 +92,8 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
           </a>
           {post.data.description}
           <footer class="article-info">
-            <span>
-              {(await post.render()).remarkPluginFrontmatter.readingTime.text}
-            </span>
-            , published
+            {(await post.render()).remarkPluginFrontmatter.readingTime.text},
+            published
             <time datetime={post.data.pubDate.toISOString()}>
               {formatDate(post.data.pubDate)}
             </time>
