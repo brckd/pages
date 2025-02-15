@@ -63,7 +63,7 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
     {
       filteredPosts.map((post) => (
         <article class="article-card">
-          <a href={`/blog/${post.slug}/`} class="article-link">
+          <a href={`/blog/${post.slug}`} class="article-link">
             <h2>{post.data.title}</h2>
           </a>
           <ul class="article-tags">
