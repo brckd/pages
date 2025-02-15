@@ -1,3 +1,4 @@
+import { loadEnv } from "vite";
 import { defineConfig } from "astro/config";
 import { SITE_URI } from "./src/consts";
 import favicons from "astro-favicons";
@@ -5,8 +6,8 @@ import mdxConfig from "./src/lib/markdownConfig";
 
 import vercel from "@astrojs/vercel";
 import netlify from "@astrojs/netlify";
-const adapter: string = import.meta.env.ADAPTER?.toLowerCase();
-console.log("ADAPTER:", adapter);
+const env = loadEnv(process.env.NODE_ENV!, process.cwd(), "");
+const adapter = env.ADAPTER?.toLowerCase();
 
 export default defineConfig({
   site: SITE_URI,
