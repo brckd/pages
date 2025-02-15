@@ -1,9 +1,11 @@
+import vercel from "@astrojs/vercel";
 import { defineConfig } from "astro/config";
 import { SITE_URI } from "./src/consts";
 import favicons from "astro-favicons";
 
 export default defineConfig({
   site: SITE_URI,
+
   integrations: [
     favicons({
       input: "src/assets/icons/icon.png",
@@ -11,5 +13,7 @@ export default defineConfig({
       short_name: "Bricked",
     }),
   ],
+
   output: "server",
+  adapter: import.meta.env.PROD ? vercel() : undefined,
 });
