@@ -7,7 +7,9 @@ export function remarkReadingTime() {
   return function (tree: Root, { data }: VFile) {
     const textOnPage = toString(tree);
     const readingTime = getReadingTime(textOnPage);
-    data.astro!.frontmatter!.readingTime = readingTime;
+    if (data.astro?.frontmatter) {
+      data.astro.frontmatter.readingTime = readingTime;
+    }
   };
 }
 
