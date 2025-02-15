@@ -14,5 +14,5 @@ export default defineConfig({
     }),
   ],
   markdown: mdxConfig,
-  adapter: import.meta.env.PROD ? vercel() : undefined,
+  adapter: import.meta.env.PROD ? vercel({ edgeMiddleware: true }) : undefined,
 });
