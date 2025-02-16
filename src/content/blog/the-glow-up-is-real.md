@@ -2,7 +2,6 @@
 title: "The glow up is real"
 description: "After a long time I have settled on a new online presence. This is surely the beginning of something."
 pubDate: "Feb 14 2025 23:00+1"
-banner: "@assets/illustrations/waving"
 tags: [personal, meta]
 ---
 
