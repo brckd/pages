@@ -21,6 +21,10 @@ const formatDate = (date: Date) =>
     dateStyle: "medium",
     timeStyle: "short",
   });
+
+function formatReadTime(minutes: number) {
+  return `${Math.ceil(minutes)} minute${minutes > 1 ? "s" : ""} read`;
+}
 ---
 
 <Layout {...post.data}>
@@ -40,8 +44,14 @@ const formatDate = (date: Date) =>
         }
       </ul>
       <div class="article-info">
-        <span>{remarkPluginFrontmatter.readingTime.text}</span>, published
-        <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+        <span class="article-readtime"
+          >{formatReadTime(remarkPluginFrontmatter.readingTime.minutes)}</span
+        >
+        ·
+        <span class="article-pubdate"
+          ><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time
+          ></span
+        >
       </div>
     </header>
     <Content />

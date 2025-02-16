@@ -30,6 +30,10 @@ const filteredPosts = currentTags.size
 const withoutTag = (tag: string) =>
   `/blog/?tags=${[...currentTags.difference(new Set([tag]))].join(";")}`;
 const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
+
+function formatReadTime(minutes: number) {
+  return `${Math.ceil(minutes)} minute${minutes > 1 ? "s" : ""} read`;
+}
 ---
 
 <Layout title="Blog">
@@ -92,11 +96,19 @@ const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
           </a>
           {post.data.description}
           <footer class="article-info">
-            {(await post.render()).remarkPluginFrontmatter.readingTime.text},
-            published
-            <time datetime={post.data.pubDate.toISOString()}>
-              {formatDate(post.data.pubDate)}
-            </time>
+            <span class="article-readtime">
+              {formatReadTime(
+                (await post.render()).remarkPluginFrontmatter.readingTime
+                  .minutes,
+              )}
+            </span>
+            ·
+            <span class="article-pubdate">
+              published
+              <time datetime={post.data.pubDate.toISOString()}>
+                {formatDate(post.data.pubDate)}
+              </time>
+            </span>
           </footer>
         </article>
       ))
