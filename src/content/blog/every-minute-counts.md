@@ -1,0 +1,8 @@
+---
+title: "Every minute counts"
+description: "Quick update: This blog now has read time counters."
+pubDate: "Feb 16 2025 01:10+1"
+tags: [meta]
+---
+
+No one wants to waste their precious time. This is why I added read time counters, so you know how much time you'll spend reading a blog post. Now I'll just have to come up with something to talk about for over a minute! ':D
