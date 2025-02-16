@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { pubDate, tags } = post.data;
+const { pubDate, tags, description, title } = post.data;
 const { Content, remarkPluginFrontmatter } = await post.render();
 
 const formatDate = (date: Date) =>
@@ -28,21 +28,23 @@ function formatReadTime(minutes: number) {
 ---
 
 <Layout {...post.data}>
-  <article>
-    <header class="article-header">
-      <ul class="article-tags">
-        {
-          tags.map((tag) => (
-            <li class="tag">
-              <Tag>
-                <a class="tag-link" href={`/blog/?tags=${tag}`}>
-                  {tag}
-                </a>
-              </Tag>
-            </li>
-          ))
-        }
-      </ul>
+  <header class="article-header" slot="title">
+    <ul class="article-tags" slot="title">
+      {
+        tags.map((tag) => (
+          <li class="tag">
+            <Tag>
+              <a class="tag-link" href={`/blog/?tags=${tag}`}>
+                {tag}
+              </a>
+            </Tag>
+          </li>
+        ))
+      }
+    </ul>
+    <h1>{title}</h1>
+    <div class="article-subheader">
+      <span class="article-description">{description}</span>
       <div class="article-info">
         <span class="article-readtime"
           >{formatReadTime(remarkPluginFrontmatter.readingTime.minutes)}</span
@@ -53,13 +55,13 @@ function formatReadTime(minutes: number) {
           ></span
         >
       </div>
-    </header>
-    <Content />
-  </article>
+    </div>
+  </header>
+  <Content />
 </Layout>
 
 <style>
-  .article-header {
+  .article-subheader {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap);
