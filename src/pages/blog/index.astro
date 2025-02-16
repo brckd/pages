@@ -67,35 +67,37 @@ function formatReadTime(minutes: number) {
     {
       filteredPosts.map(async (post) => (
         <article class="article-card">
-          <ul class="article-tags">
-            {post.data.tags
-              .filter((tag) => currentTags.has(tag))
-              .map((tag) => (
-                <li class="tag">
-                  <Tag selected>
-                    <a class="tag-link" href={withoutTag(tag)}>
-                      {tag}
-                    </a>
-                  </Tag>
-                </li>
-              ))}
-            {post.data.tags
-              .filter((tag) => !currentTags.has(tag))
-              .map((tag) => (
-                <li class="tag">
-                  <Tag>
-                    <a class="tag-link" href={withTag(tag)}>
-                      {tag}
-                    </a>
-                  </Tag>
-                </li>
-              ))}
-          </ul>
-          <a href={`/blog/${post.slug}`} class="article-link">
-            <h2>{post.data.title}</h2>
-          </a>
-          {post.data.description}
-          <footer class="article-info">
+          <header class="article-header">
+            <ul class="article-tags">
+              {post.data.tags
+                .filter((tag) => currentTags.has(tag))
+                .map((tag) => (
+                  <li class="tag">
+                    <Tag selected>
+                      <a class="tag-link" href={withoutTag(tag)}>
+                        {tag}
+                      </a>
+                    </Tag>
+                  </li>
+                ))}
+              {post.data.tags
+                .filter((tag) => !currentTags.has(tag))
+                .map((tag) => (
+                  <li class="tag">
+                    <Tag>
+                      <a class="tag-link" href={withTag(tag)}>
+                        {tag}
+                      </a>
+                    </Tag>
+                  </li>
+                ))}
+            </ul>
+            <a class="article-link" href={`/blog/${post.slug}`}>
+              <h2>{post.data.title}</h2>
+            </a>
+          </header>
+          <span class="article-description">{post.data.description}</span>
+          <header class="article-info">
             <span class="article-readtime">
               {formatReadTime(
                 (await post.render()).remarkPluginFrontmatter.readingTime
@@ -109,7 +111,7 @@ function formatReadTime(minutes: number) {
                 {formatDate(post.data.pubDate)}
               </time>
             </span>
-          </footer>
+          </header>
         </article>
       ))
     }
@@ -139,6 +141,12 @@ function formatReadTime(minutes: number) {
     > :global(*) {
       --color-mantle: var(--color-crust);
     }
+  }
+
+  .article-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap);
   }
 
   .article-info {
