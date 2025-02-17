@@ -3,6 +3,7 @@ import Layout from "@layouts/Layout.astro";
 import Tag from "@comps/Tag.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
+import Card from "@comps/Card.astro";
 
 export const prerender = false;
 
@@ -66,144 +67,59 @@ function formatReadTime(minutes: number) {
 
   <div class="article-list">
     {
-      filteredPosts.map(async ({ slug, data, render }) => (
-        <article class="article-card">
-          <header class="article-header">
-            <ul class="article-tags">
-              {data.tags
-                .filter((tag) => currentTags.has(tag))
-                .map((tag) => (
-                  <li class="tag">
-                    <Tag selected>
-                      <a class="tag-link" href={withoutTag(tag)}>
-                        {tag}
-                      </a>
-                    </Tag>
-                  </li>
-                ))}
-              {data.tags
-                .filter((tag) => !currentTags.has(tag))
-                .map((tag) => (
-                  <li class="tag">
-                    <Tag>
-                      <a class="tag-link" href={withTag(tag)}>
-                        {tag}
-                      </a>
-                    </Tag>
-                  </li>
-                ))}
-            </ul>
-            <a class="article-link" href={`/blog/${slug}`}>
-              <h2>{data.title}</h2>
-            </a>
-          </header>
-          <span class="article-description">{data.description}</span>
-          {data.banner && (
-            <div class="article-banner">
-              <Image src={data.banner} width={600} alt={data.bannerAlt} />
-            </div>
-          )}
-          <header class="article-info">
-            <span class="article-readtime">
-              {formatReadTime(
-                (await render()).remarkPluginFrontmatter.readingTime.minutes,
-              )}
-            </span>
-            ·
-            <span class="article-pubdate">
-              published
-              <time datetime={data.pubDate.toISOString()}>
-                {formatDate(data.pubDate)}
-              </time>
-            </span>
-          </header>
-        </article>
+      filteredPosts.map(({ slug, data, render }) => (
+        <Card
+          title={data.title}
+          href={`/blog/${slug}`}
+          description={data.description}
+          image={data.banner}
+          imageAlt={data.bannerAlt}
+        >
+          <ul slot="header" class="article-tags">
+            {data.tags
+              .filter((tag) => currentTags.has(tag))
+              .map((tag) => (
+                <li class="tag">
+                  <Tag selected>
+                    <a class="tag-link" href={withoutTag(tag)}>
+                      {tag}
+                    </a>
+                  </Tag>
+                </li>
+              ))}
+            {data.tags
+              .filter((tag) => !currentTags.has(tag))
+              .map((tag) => (
+                <li class="tag">
+                  <Tag>
+                    <a class="tag-link" href={withTag(tag)}>
+                      {tag}
+                    </a>
+                  </Tag>
+                </li>
+              ))}
+          </ul>
+          <span slot="footer">
+            {render().then((res) =>
+              formatReadTime(res.remarkPluginFrontmatter.readingTime.minutes),
+            )}
+            · published
+            <time datetime={data.pubDate.toISOString()}>
+              {formatDate(data.pubDate)}
+            </time>
+          </span>
+        </Card>
       ))
     }
   </div>
 </Layout>
 
 <style>
-  h2 {
-    margin: 0;
-  }
-
   .article-list {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-gap);
     margin-top: var(--spacing-gap);
-  }
-
-  .article-card {
-    display: grid;
-    flex-direction: column;
-    grid-template-columns: 3fr 2fr;
-    gap: var(--spacing-gap);
-    background: rgb(var(--color-mantle));
-    padding: var(--spacing-padding);
-    border-radius: var(--radius-layout);
-
-    > :global(*) {
-      --color-mantle: var(--color-crust);
-      grid-column: 1;
-    }
-
-    &:not(:has(.article-banner)) {
-      display: flex;
-    }
-  }
-
-  .article-description {
-    text-align: justify;
-  }
-
-  @media (max-width: 600px) {
-    .article-card {
-      display: flex;
-    }
-  }
-
-  .article-header {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-gap);
-  }
-
-  .article-info {
-    font-size: smaller;
-    color: rgb(var(--color-subtext1));
-  }
-
-  .article-link {
-    text-decoration: none;
-  }
-
-  .article-banner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgb(var(--color-mantle));
-    overflow: hidden;
-    border-radius: var(--radius-layout);
-    grid-column: 2;
-    grid-row: 1 / span 3;
-
-    img {
-      object-fit: cover;
-      max-height: 160px;
-      width: 100%;
-      height: 100%;
-    }
-  }
-
-  @media (max-width: 600px) {
-    .article-banner img {
-      max-width: 600px;
-      max-height: 200px;
-      height: auto;
-    }
   }
 
   .tags,
