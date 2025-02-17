@@ -84,3 +84,8 @@ dd {
     flex-direction: column;
   }
 }
+
+.heading-anchor {
+  text-decoration: none;
+  margin-right: 1ch;
+}
