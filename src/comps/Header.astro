@@ -1,35 +1,10 @@
 ---
-import { SITE_TITLE } from "@src/consts";
-
-let pathSegments: { name: string; path: string }[] = [];
-let path = "";
-for (const segment of Astro.url.pathname.split("/")) {
-  path += `${segment}/`;
-  pathSegments.push({
-    name: segment.replaceAll("-", " ").replace(/\w/, (c) => c.toUpperCase()),
-    path,
-  });
-}
-pathSegments[0].name = SITE_TITLE;
-if (pathSegments.at(-1)?.name === "") {
-  pathSegments.pop();
-}
+import Breadcrumbs from "@comps/Breadcrumbs.astro";
 ---
 
 <header>
   <div class="content">
-    <nav aria-label="breadcrumb" class="breadcrumb">
-      <ol>
-        {
-          pathSegments.slice(0, -1).map(({ name, path }) => (
-            <li>
-              <a href={path}>{name}</a>
-            </li>
-          ))
-        }
-        <li><span aria-current="page">{pathSegments.at(-1)?.name}</span></li>
-      </ol>
-    </nav>
+    <Breadcrumbs />
     <nav aria-label="links" class="links">
       <a href="/blog">Blog</a>
       <a href="/socials">Socials</a>
@@ -65,42 +40,5 @@ if (pathSegments.at(-1)?.name === "") {
     align-items: center;
     gap: var(--spacing-gap);
     font-weight: 600;
-  }
-
-  @media (max-width: 600px) {
-    .breadcrumb {
-      li:not(:first-child) {
-        display: none;
-      }
-
-      li::after {
-        visibility: hidden;
-      }
-    }
-  }
-
-  .breadcrumb {
-    ol {
-      display: flex;
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      align-items: center;
-    }
-
-    li {
-      display: flex;
-      align-items: center;
-    }
-
-    li:not(:last-child)::after {
-      display: inline-block;
-      margin: 0 1ch;
-      content: ">";
-    }
-
-    li:first-child {
-      font-weight: 600;
-    }
   }
 </style>
