@@ -148,6 +148,10 @@ function formatReadTime(minutes: number) {
       --color-mantle: var(--color-crust);
       grid-column: 1;
     }
+
+    &:not(:has(.article-banner)) {
+      display: flex;
+    }
   }
 
   @media (max-width: 600px) {
