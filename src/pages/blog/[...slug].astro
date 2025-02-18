@@ -3,6 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Illustration from "@comps/Illustration.astro";
 import Tags from "@comps/Tags.astro";
+import Info from "@comps/Info.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -15,70 +16,18 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { pubDate, description, title, banner, bannerAlt, tags } = post.data;
+const { pubDate, title, tags } = post.data;
 const { Content, remarkPluginFrontmatter } = await post.render();
-
-const formatDate = (date: Date) =>
-  date.toLocaleString("en-GB", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
-
-function formatReadTime(minutes: number) {
-  return `${Math.ceil(minutes)} minute${minutes > 1 ? "s" : ""} read`;
-}
 ---
 
 <Layout {...post.data}>
   <header class="article-header" slot="title">
     <Tags tags={tags} href="/blog" />
     <h1>{title}</h1>
-    <div class="article-subheader">
-      <span class="article-description">{description}</span>
-      {banner && <Illustration src={banner} alt={bannerAlt} />}
-      <div class="article-info">
-        <span class="article-readtime"
-          >{formatReadTime(remarkPluginFrontmatter.readingTime.minutes)}</span
-        >
-        ·
-        <span class="article-pubdate"
-          ><time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time
-          ></span
-        >
-      </div>
-    </div>
+    <Info
+      readTime={remarkPluginFrontmatter.readingTime.minutes}
+      pubDate={pubDate}
+    />
   </header>
   <Content components={{ img: Illustration }} />
 </Layout>
-
-<style>
-  .article-subheader {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-gap);
-  }
-
-  .article-info {
-    font-size: smaller;
-    color: rgb(var(--color-subtext1));
-  }
-
-  .article-description {
-    text-align: justify;
-  }
-
-  .article-tags {
-    all: unset;
-    display: flex;
-    gap: var(--spacing-gap);
-    flex-wrap: wrap;
-
-    li {
-      all: unset;
-    }
-  }
-
-  .tag-link {
-    text-decoration: none;
-  }
-</style>
