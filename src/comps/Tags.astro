@@ -1,0 +1,101 @@
+---
+import Tag from "@comps/Tag.astro";
+import Stack, { type Props as StackProps } from "@comps/Stack.astro";
+import Item from "@comps/Item.astro";
+
+interface Props extends StackProps {
+  param?: string;
+  separator?: string;
+  href?: URL | string;
+  tags?: Iterable<string>;
+}
+
+const { param = "tags", href = Astro.url, separator = ";" } = Astro.props;
+const url = new URL(href, Astro.url);
+
+const activeTags = new Set(
+  url.searchParams
+    .get(param)
+    ?.split(";")
+    .map(decodeURI)
+    .filter((tag) => tag) ?? [],
+);
+const tags = new Set(Astro.props.tags ?? activeTags);
+const passiveTags = tags.difference(activeTags);
+
+export function withoutItem<T>(items: Iterable<T>, item: T) {
+  const set = new Set(items);
+  set.delete(item);
+  return set;
+}
+
+export function withItem<T>(items: Iterable<T>, item: T) {
+  const set = new Set(items);
+  set.add(item);
+  return set;
+}
+
+export function withSearchParam(
+  href: URL | string,
+  param: string,
+  value: string,
+) {
+  const url = new URL(href);
+  url.searchParams.set(param, value);
+  return url;
+}
+
+export function splitTags(tags: string, separator: string = ";") {
+  return new Set(
+    tags
+      .split(separator)
+      .filter((tag) => tag)
+      .map(decodeURI),
+  );
+}
+
+export function joinTags(tags: Iterable<string>, separator: string = ";") {
+  return [...tags].map(encodeURI).join(separator);
+}
+---
+
+<Stack direction="row" display="inline" {...Astro.props}>
+  {
+    [...activeTags].map((tag) => (
+      <Item>
+        <Tag
+          active
+          href={withSearchParam(
+            url,
+            param,
+            joinTags(withoutItem(activeTags, tag), separator),
+          )}
+        >
+          {tag}
+        </Tag>
+      </Item>
+    ))
+  }
+
+  {
+    [...passiveTags].map((tag) => (
+      <Item>
+        <Tag
+          href={withSearchParam(
+            url,
+            param,
+            joinTags(withItem(activeTags, tag), separator),
+          )}
+        >
+          {tag}
+        </Tag>
+      </Item>
+    ))
+  }
+</Stack>
+
+<style>
+  .tag-anchor {
+    text-decoration: none;
+  }
+</style>

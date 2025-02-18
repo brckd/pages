@@ -1,9 +1,10 @@
 ---
 import Layout from "@layouts/Layout.astro";
-import Tag from "@comps/Tag.astro";
 import { getCollection } from "astro:content";
-import { Image } from "astro:assets";
 import Card from "@comps/Card.astro";
+import Stack from "@comps/Stack.astro";
+import Item from "@comps/Item.astro";
+import Tags, { splitTags } from "@comps/Tags.astro";
 
 export const prerender = false;
 
@@ -16,22 +17,11 @@ const formatDate = (date: Date) =>
     timeStyle: "short",
   });
 
-const currentTags = new Set(
-  Astro.url.searchParams
-    .get("tags")
-    ?.split(";")
-    .filter((tag) => tag) ?? [],
-);
-const otherTags = new Set(posts.flatMap((post) => post.data.tags)).difference(
-  currentTags,
-);
-const filteredPosts = currentTags.size
-  ? posts.filter((post) => currentTags.isSubsetOf(new Set(post.data.tags)))
-  : posts;
+const activeTags = splitTags(Astro.url.searchParams.get("tags") ?? "");
 
-const withoutTag = (tag: string) =>
-  `/blog/?tags=${[...currentTags.difference(new Set([tag]))].join(";")}`;
-const withTag = (tag: string) => `?tags=${[...currentTags, tag].join(";")}`;
+const filteredPosts = activeTags.size
+  ? posts.filter((post) => activeTags.isSubsetOf(new Set(post.data.tags)))
+  : posts;
 
 function formatReadTime(minutes: number) {
   return `${Math.ceil(minutes)} minute${minutes > 1 ? "s" : ""} read`;
@@ -39,102 +29,37 @@ function formatReadTime(minutes: number) {
 ---
 
 <Layout title="Blog">
-  <ul class="tags">
-    {
-      [...currentTags].map((tag) => (
-        <li class="tag">
-          <Tag selected>
-            <a class="tag-link" href={withoutTag(tag)}>
-              {tag}
-            </a>
-          </Tag>
-        </li>
-      ))
-    }
-
-    {
-      [...otherTags].map((tag) => (
-        <li class="tag">
-          <Tag selected={false}>
-            <a class="tag-link" href={withTag(tag)}>
-              {tag}
-            </a>
-          </Tag>
-        </li>
-      ))
-    }
-  </ul>
-
-  <div class="article-list">
+  <Tags tags={posts.flatMap((post) => post.data.tags)} id="tags" />
+  <Stack>
     {
       filteredPosts.map(({ slug, data, render }) => (
-        <Card
-          title={data.title}
-          href={`/blog/${slug}`}
-          description={data.description}
-          image={data.banner}
-          imageAlt={data.bannerAlt}
-        >
-          <ul slot="header" class="article-tags">
-            {data.tags
-              .filter((tag) => currentTags.has(tag))
-              .map((tag) => (
-                <li class="tag">
-                  <Tag selected>
-                    <a class="tag-link" href={withoutTag(tag)}>
-                      {tag}
-                    </a>
-                  </Tag>
-                </li>
-              ))}
-            {data.tags
-              .filter((tag) => !currentTags.has(tag))
-              .map((tag) => (
-                <li class="tag">
-                  <Tag>
-                    <a class="tag-link" href={withTag(tag)}>
-                      {tag}
-                    </a>
-                  </Tag>
-                </li>
-              ))}
-          </ul>
-          <span slot="footer">
-            {render().then((res) =>
-              formatReadTime(res.remarkPluginFrontmatter.readingTime.minutes),
-            )}
-            · published
-            <time datetime={data.pubDate.toISOString()}>
-              {formatDate(data.pubDate)}
-            </time>
-          </span>
-        </Card>
+        <Item>
+          <Card
+            title={data.title}
+            href={`/blog/${slug}`}
+            description={data.description}
+            image={data.banner}
+            imageAlt={data.bannerAlt}
+          >
+            <Tags slot="header" tags={data.tags} />
+            <span slot="footer">
+              {render().then((res) =>
+                formatReadTime(res.remarkPluginFrontmatter.readingTime.minutes),
+              )}
+              · published
+              <time datetime={data.pubDate.toISOString()}>
+                {formatDate(data.pubDate)}
+              </time>
+            </span>
+          </Card>
+        </Item>
       ))
     }
-  </div>
+  </Stack>
 </Layout>
 
 <style>
-  .article-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-gap);
-    margin-top: var(--spacing-gap);
-  }
-
-  .tags,
-  .article-tags {
-    all: unset;
-    display: flex;
-    gap: var(--spacing-gap);
-    flex-wrap: wrap;
-
-    li {
-      all: unset;
-    }
-  }
-
-  .tag-link {
-    text-decoration: none;
+  #tags {
+    margin-bottom: var(--spacing-gap);
   }
 </style>

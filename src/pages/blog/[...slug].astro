@@ -1,9 +1,8 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
-import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
-import Tag from "@comps/Tag.astro";
 import Illustration from "@comps/Illustration.astro";
+import Tags from "@comps/Tags.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -16,7 +15,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { pubDate, tags, description, title, banner, bannerAlt } = post.data;
+const { pubDate, description, title, banner, bannerAlt, tags } = post.data;
 const { Content, remarkPluginFrontmatter } = await post.render();
 
 const formatDate = (date: Date) =>
@@ -32,19 +31,7 @@ function formatReadTime(minutes: number) {
 
 <Layout {...post.data}>
   <header class="article-header" slot="title">
-    <ul class="article-tags" slot="title">
-      {
-        tags.map((tag) => (
-          <li class="tag">
-            <Tag>
-              <a class="tag-link" href={`/blog/?tags=${tag}`}>
-                {tag}
-              </a>
-            </Tag>
-          </li>
-        ))
-      }
-    </ul>
+    <Tags tags={tags} href="/blog" />
     <h1>{title}</h1>
     <div class="article-subheader">
       <span class="article-description">{description}</span>

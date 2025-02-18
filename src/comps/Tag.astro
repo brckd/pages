@@ -1,21 +1,28 @@
 ---
 interface Props {
-  selected?: boolean;
+  active?: boolean;
+  href: URL | string;
 }
 
-const { selected } = Astro.props;
+const { active, href } = Astro.props;
 ---
 
-<span class:list={["badge", { selected }]}>
-  {selected && "-"}
-  <slot />
+<span class="tag" }>
+  <a class="tag-anchor" href={href}>
+    {active && "-"}
+    <slot />
+  </a>
 </span>
 
 <style>
-  .badge {
+  .tag {
     background: rgb(var(--color-mantle));
     border-radius: var(--radius-content);
     padding: 0 0.3em;
     text-wrap: nowrap;
+  }
+
+  .tag-anchor {
+    text-decoration: none;
   }
 </style>

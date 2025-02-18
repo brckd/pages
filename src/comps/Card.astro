@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Tags from "@comps/Tags.astro";
 
 interface Props extends astroHTML.JSX.HTMLAttributes {
   title?: string;
@@ -19,7 +20,7 @@ const { title, href, image, imageAlt, description } = Astro.props;
 <article {...Astro.props} class="card">
   {
     (Astro.slots.has("header") ||
-      Astro.slots.has("heading") ||
+      Astro.slots.has("title") ||
       title ||
       href) && (
       <header class="card-header">
