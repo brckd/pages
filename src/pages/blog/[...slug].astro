@@ -31,6 +31,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
           width={banner.width}
           height={banner.height}
           alt={bannerAlt}
+          id="article-image"
         />
       )
     }
@@ -41,3 +42,9 @@ const { Content, remarkPluginFrontmatter } = await post.render();
   </header>
   <Content components={{ img: Illustration }} />
 </Layout>
+
+<style>
+  #article-image {
+    margin-bottom: var(--spacing-gap);
+  }
+</style>

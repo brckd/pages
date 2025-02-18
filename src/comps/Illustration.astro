@@ -5,11 +5,12 @@ import {
   type RemoteImageProps,
 } from "astro:assets";
 
-type Props = LocalImageProps | RemoteImageProps;
+type Props = (LocalImageProps | RemoteImageProps) &
+  astroHTML.JSX.HTMLAttributes;
 const { src, alt } = Astro.props;
 ---
 
-<figure class="banner">
+<figure class="banner" {...Astro.props}>
   <Image src={src} alt={alt} width={800} />
   <figcaption>{alt}</figcaption>
 </figure>
