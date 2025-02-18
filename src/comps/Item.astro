@@ -1,0 +1,13 @@
+---
+export type Props = astroHTML.JSX.HTMLAttributes;
+---
+
+<li class:list={["item"]} {...Astro.props}>
+  <slot />
+</li>
+
+<style>
+  .item {
+    all: unset;
+  }
+</style>
