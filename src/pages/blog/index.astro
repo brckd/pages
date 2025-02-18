@@ -17,10 +17,6 @@ const activeTags = splitTags(Astro.url.searchParams.get("tags") ?? "");
 const filteredPosts = activeTags.size
   ? posts.filter((post) => activeTags.isSubsetOf(new Set(post.data.tags)))
   : posts;
-
-function formatReadTime(minutes: number) {
-  return `${Math.ceil(minutes)} minute${minutes > 1 ? "s" : ""} read`;
-}
 ---
 
 <Layout title="Blog">
