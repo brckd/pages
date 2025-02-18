@@ -1,0 +1,35 @@
+---
+export interface Props extends astroHTML.JSX.HTMLAttributes {
+  direction?: "row" | "column";
+  display?: "box" | "inline";
+}
+const { direction = "column", display = "box" } = Astro.props;
+---
+
+<ul class:list={["stack", direction, display]} {...Astro.props}>
+  <slot />
+</ul>
+
+<style>
+  .stack {
+    all: unset;
+
+    &.box {
+      display: flex;
+      gap: var(--spacing-gap);
+    }
+
+    &.inline {
+      display: inline-flex;
+      gap: 1ch;
+    }
+
+    &.row {
+      flex-direction: row;
+    }
+
+    &.column {
+      flex-direction: column;
+    }
+  }
+</style>
