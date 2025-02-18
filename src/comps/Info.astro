@@ -1,0 +1,40 @@
+---
+export interface Props {
+  readTime?: number;
+  pubDate?: Date;
+}
+
+const { readTime, pubDate } = Astro.props;
+
+export function formatReadTime(minutes: number) {
+  return `${Math.ceil(minutes)} minute${minutes > 1 ? "s" : ""} read`;
+}
+
+export function formatDate(date: Date) {
+  return date.toLocaleString("en-GB", {
+    dateStyle: "medium",
+    timeStyle: "short",
+  });
+}
+---
+
+<footer class="info">
+  <slot />
+  {readTime && <span class="info-readtime">{formatReadTime(readTime)}</span>}
+  {
+    pubDate && (
+      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+    )
+  }
+</footer>
+
+<style>
+  .info {
+    font-size: smaller;
+    color: rgb(var(--color-subtext1));
+
+    > :global(*):not(:first-child)::before {
+      content: " · ";
+    }
+  }
+</style>

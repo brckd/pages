@@ -11,11 +11,6 @@ export const prerender = false;
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-const formatDate = (date: Date) =>
-  date.toLocaleString("en-GB", {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
 
 const activeTags = splitTags(Astro.url.searchParams.get("tags") ?? "");
 
@@ -32,28 +27,25 @@ function formatReadTime(minutes: number) {
   <Tags tags={posts.flatMap((post) => post.data.tags)} id="tags" />
   <Stack>
     {
-      filteredPosts.map(({ slug, data, render }) => (
-        <Item>
-          <Card
-            title={data.title}
-            href={`/blog/${slug}`}
-            description={data.description}
-            image={data.banner}
-            imageAlt={data.bannerAlt}
-          >
-            <Tags slot="header" tags={data.tags} />
-            <span slot="footer">
-              {render().then((res) =>
-                formatReadTime(res.remarkPluginFrontmatter.readingTime.minutes),
-              )}
-              · published
-              <time datetime={data.pubDate.toISOString()}>
-                {formatDate(data.pubDate)}
-              </time>
-            </span>
-          </Card>
-        </Item>
-      ))
+      filteredPosts.map(async ({ slug, data, render }) => {
+        const readTime = (await render()).remarkPluginFrontmatter.readingTime
+          .minutes;
+        return (
+          <Item>
+            <Card
+              title={data.title}
+              href={`/blog/${slug}`}
+              description={data.description}
+              image={data.banner}
+              imageAlt={data.bannerAlt}
+              readTime={readTime}
+              pubDate={data.pubDate}
+            >
+              <Tags slot="header" tags={data.tags} />
+            </Card>
+          </Item>
+        );
+      })
     }
   </Stack>
 </Layout>
