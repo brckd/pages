@@ -59,7 +59,7 @@ export function joinTags(tags: Iterable<string>, separator: string = ";") {
 }
 ---
 
-<Stack direction="row" display="inline" {...Astro.props}>
+<Stack direction="row" display="inline" aria-label="tags" {...Astro.props}>
   {
     [...activeTags].map((tag) => (
       <Item>

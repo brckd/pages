@@ -1,10 +1,13 @@
 ---
 import Webrings from "@comps/Webrings.astro";
+import { LICENSE_URI } from "@src/consts";
 ---
 
 <footer>
   <div class="content">
-    <span>&copy; 2023 - 2025 bricked</span>
+    <a class="license" rel="license" href={LICENSE_URI}
+      >&copy; 2023 - 2025 bricked</a
+    >
     <Webrings />
   </div>
 </footer>
@@ -19,6 +22,10 @@ import Webrings from "@comps/Webrings.astro";
     > :global(*) {
       --color-mantle: var(--color-crust);
     }
+  }
+
+  .license {
+    text-decoration: none;
   }
 
   .content {

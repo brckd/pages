@@ -3,10 +3,19 @@ export interface Props extends astroHTML.JSX.HTMLAttributes {
   direction?: "row" | "column";
   display?: "box" | "inline";
 }
-const { direction = "column", display = "box" } = Astro.props;
+
+const {
+  direction = "column",
+  display = "box",
+  class: className,
+  "class:list": classList,
+} = Astro.props;
 ---
 
-<ul class:list={["stack", direction, display]} {...Astro.props}>
+<ul
+  class:list={[["stack", direction, display], classList, className]}
+  {...Astro.props}
+>
   <slot />
 </ul>
 

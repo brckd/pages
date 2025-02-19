@@ -1,13 +1,17 @@
 ---
 import Breadcrumbs from "@comps/Breadcrumbs.astro";
+import Stack from "@comps/Stack.astro";
+import Item from "@comps/Item.astro";
 ---
 
 <header>
   <div class="content">
     <Breadcrumbs />
     <nav aria-label="links" class="links">
-      <a href="/blog">Blog</a>
-      <a href="/socials">Socials</a>
+      <Stack direction="row" display="inline">
+        <Item><a href="/blog">Blog</a></Item>
+        <Item><a href="/socials">Socials</a></Item>
+      </Stack>
     </nav>
   </div>
 </header>
