@@ -27,13 +27,9 @@ export default defineConfig({
   integrations: [mdx(), sitemap()],
   adapter:
     adapter === "netlify"
-      ? netlify({
-          cacheOnDemandPages: true,
-        })
+      ? netlify()
       : adapter === "vercel"
-        ? vercel({
-            isr: true,
-          })
+        ? vercel()
         : undefined,
   vite: {
     plugins: [
