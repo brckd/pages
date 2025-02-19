@@ -14,11 +14,20 @@ interface Props extends astroHTML.JSX.HTMLAttributes, InfoProps {
   description?: string;
 }
 
-const { title, href, image, imageAlt, description, readTime, pubDate } =
-  Astro.props;
+const {
+  title,
+  href,
+  image,
+  imageAlt,
+  description,
+  readTime,
+  pubDate,
+  class: className,
+  "class:list": classList,
+} = Astro.props;
 ---
 
-<article {...Astro.props} class="card">
+<article class:list={["card", classList, className]} {...Astro.props}>
   {
     (Astro.slots.has("header") ||
       Astro.slots.has("title") ||
