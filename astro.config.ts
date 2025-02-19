@@ -16,13 +16,24 @@ const adapter = env.ADAPTER?.toLowerCase();
 
 export default defineConfig({
   site: SITE_URI,
+  server: {
+    headers: {
+      "Cross-Origin-Opener-Policy": "same-origin",
+      "X-Content-Type-Options": "nosniff",
+      "Cache-Control": "public, max-age=300, must-revalidate",
+    },
+  },
   markdown,
   integrations: [mdx(), sitemap()],
   adapter:
     adapter === "netlify"
-      ? netlify()
+      ? netlify({
+          cacheOnDemandPages: true,
+        })
       : adapter === "vercel"
-        ? vercel()
+        ? vercel({
+            isr: true,
+          })
         : undefined,
   vite: {
     plugins: [
