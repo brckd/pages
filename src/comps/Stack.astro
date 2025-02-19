@@ -1,33 +1,34 @@
 ---
 export interface Props extends astroHTML.JSX.HTMLAttributes {
   direction?: "row" | "column";
-  display?: "box" | "inline";
+  inline?: boolean;
+  ordered?: boolean;
 }
 
 const {
   direction = "column",
-  display = "box",
+  inline = false,
+  ordered = false,
   class: className,
   "class:list": classList,
 } = Astro.props;
+
+const List = ordered ? "ol" : "ul";
 ---
 
-<ul
-  class:list={[["stack", direction, display], classList, className]}
+<List
+  class:list={["stack", direction, { inline }, classList, className]}
   {...Astro.props}
 >
   <slot />
-</ul>
+</List>
 
 <style>
   .stack {
     all: unset;
+    display: flex;
     flex-wrap: wrap;
-
-    &.box {
-      display: flex;
-      gap: var(--spacing-gap);
-    }
+    gap: var(--spacing-gap);
 
     &.inline {
       display: inline-flex;
@@ -36,6 +37,7 @@ const {
 
     &.row {
       flex-direction: row;
+      align-items: center;
     }
 
     &.column {

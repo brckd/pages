@@ -1,13 +1,18 @@
 ---
 import Webrings from "@comps/Webrings.astro";
 import { LICENSE_URI } from "@src/consts";
+import { Icon } from "astro-icon/components";
 ---
 
 <footer>
   <div class="content">
-    <a class="license" rel="license" href={LICENSE_URI}
-      >&copy; 2023 - 2025 bricked</a
-    >
+    <a class="license" rel="license" href={LICENSE_URI}>
+      <Icon
+        name="material-symbols:copyright-outline"
+        title="copyright"
+        class="icon"
+      />&nbsp;2023 - 2025 bricked
+    </a>
     <Webrings />
   </div>
 </footer>
@@ -26,6 +31,8 @@ import { LICENSE_URI } from "@src/consts";
 
   .license {
     text-decoration: none;
+    display: flex;
+    align-items: center;
   }
 
   .content {
