@@ -12,8 +12,8 @@
   --spacing-gap: 1rem;
   --radius-layout: 0.5em;
   --radius-content: 0.3em;
-  --font-content: "Lexend Variable", sans-serif;
-  --font-code: "JetBrains Mono Variable", monospace;
+  --font-content: "Lexend Variable", "Lexend Variable fallback", sans-serif;
+  --font-code: "JetBrains Mono Variable", "JetBrains Mono Fallback", monospace;
 }
 
 :root[data-theme~="latte"] {
