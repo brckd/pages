@@ -28,10 +28,9 @@ const { Content, remarkPluginFrontmatter } = await post.render();
       banner && (
         <Illustration
           src={banner}
-          width={banner.width}
-          height={banner.height}
           alt={bannerAlt}
           id="article-image"
+          loading="eager"
         />
       )
     }
