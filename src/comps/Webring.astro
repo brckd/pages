@@ -14,32 +14,37 @@ slug ??= name.toLowerCase().replace(" ", "-");
 ---
 
 <nav class="webring" aria-label={`${name} webring`} id={`webring-${slug}`}>
-  <a class="webring-prev" href={prevURL}>
+  <a class:list={["webring-anchor", "webring-prev"]} href={prevURL}>
     <Icon name="material-symbols:arrow-back" title="previous webring member" />
   </a>
-  <a class="webring-base" aria-label="webring index" href={baseURL}>
+  <a
+    class:list={["webring-anchor", "webring-index"]}
+    aria-label="webring index"
+    href={baseURL}
+  >
     {name} Webring
   </a>
-  <a class="webring-next" href={nextURL}>
+  <a class:list={["webring-anchor", "webring-next"]} href={nextURL}>
     <Icon name="material-symbols:arrow-forward" title="next webring member" />
   </a>
 </nav>
 
 <style>
-  a {
+  .webring-anchor {
     text-decoration: none;
+    padding: var(--spacing-padding);
+    background: rgb(var(--color-mantle));
   }
 
-  .webring-base {
+  .webring-index {
     flex: 1;
   }
 
   .webring {
     display: flex;
-    background: rgb(var(--color-mantle));
-    gap: var(--spacing-gap);
-    padding: var(--spacing-padding);
+    flex-direction: row;
     border-radius: var(--radius-layout);
-    justify-content: space-between;
+    gap: 0.3em;
+    overflow: hidden;
   }
 </style>
