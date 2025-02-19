@@ -5,6 +5,7 @@ import Card from "@comps/Card.astro";
 import Stack from "@comps/Stack.astro";
 import Item from "@comps/Item.astro";
 import Tags, { splitTags } from "@comps/Tags.astro";
+import { Icon } from "astro-icon/components";
 
 export const prerender = false;
 
@@ -20,6 +21,13 @@ const filteredPosts = activeTags.size
 ---
 
 <Layout title="Blog">
+  <div slot="title" class="title">
+    <h1>Blog</h1>
+    <a class="rss-anchor" href="/blog/rss.xml"
+      ><Icon name="material-symbols:rss-feed" title="rss feed" /></a
+    >
+  </div>
+
   <Tags tags={posts.flatMap((post) => post.data.tags)} id="tags" />
   <Stack>
     {
@@ -49,5 +57,16 @@ const filteredPosts = activeTags.size
 <style>
   #tags {
     margin-bottom: var(--spacing-gap);
+  }
+
+  .title {
+    display: flex;
+    flex-direction: row;
+    gap: var(--spacing-gap);
+    align-items: center;
+  }
+
+  .rss-anchor {
+    font-size: 2em;
   }
 </style>

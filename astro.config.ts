@@ -23,6 +23,7 @@ const iconOptions: IconOptions = {
       "arrow-back",
       "chevron-right",
       "copyright-outline",
+      "rss-feed",
     ],
   },
 };
