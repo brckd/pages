@@ -8,16 +8,16 @@ import {
 type Props = (LocalImageProps | RemoteImageProps) &
   astroHTML.JSX.HTMLAttributes;
 
-const { alt } = Astro.props;
+const { alt, class: className, "class:list": classList } = Astro.props;
 ---
 
-<figure class="banner" {...Astro.props}>
-  <Image {...Astro.props} width={800} />
+<figure class:list={["illustration", classList, className]}>
+  <Image width={800} {...Astro.props} />
   <figcaption>{alt}</figcaption>
 </figure>
 
 <style>
-  .banner {
+  .illustration {
     all: unset;
     box-sizing: border-box;
     width: 100%;
