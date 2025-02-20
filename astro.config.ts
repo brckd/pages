@@ -34,7 +34,6 @@ export default defineConfig({
     headers: {
       "Cross-Origin-Opener-Policy": "same-origin",
       "X-Content-Type-Options": "nosniff",
-      "Cache-Control": "public, max-age=300, must-revalidate",
     },
   },
   markdown,
