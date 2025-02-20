@@ -16,34 +16,39 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { pubDate, title, tags, banner, bannerAlt } = post.data;
+const { pubDate, title, tags, banner, bannerAlt, description } = post.data;
 const { Content, remarkPluginFrontmatter } = await post.render();
 ---
 
 <Layout {...post.data}>
-  <header class="article-header" slot="title">
+  <header slot="title">
     <Tags tags={tags} href="/blog" />
     <h1>{title}</h1>
-    {
-      banner && (
-        <Illustration
-          src={banner}
-          alt={bannerAlt}
-          id="article-image"
-          loading="eager"
-        />
-      )
-    }
-    <Info
-      readTime={remarkPluginFrontmatter.readingTime.minutes}
-      pubDate={pubDate}
-    />
+    <div class="grid">
+      <span class="article-description">{description}</span>
+      {
+        banner && (
+          <Illustration
+            src={banner}
+            alt={bannerAlt}
+            loading="eager"
+            class="article-image"
+          />
+        )
+      }
+      <Info
+        readTime={remarkPluginFrontmatter.readingTime.minutes}
+        pubDate={pubDate}
+      />
+    </div>
   </header>
   <Content components={{ img: Illustration }} />
 </Layout>
 
 <style>
-  #article-image {
-    margin-bottom: var(--spacing-gap);
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-gap);
   }
 </style>
