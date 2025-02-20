@@ -1,0 +1,98 @@
+---
+title: "Magically style your desktop with Stylix"
+description:
+  "Stylix is a stunning Nix Flake that automatically styles your desktop."
+pubDate: "Feb 20 2025 00:30+1"
+banner: "@assets/illustrations/stylix-woodmark.png"
+bannerAlt:
+  'A hand drawn woodmark spelling "Stylix" with a brush in place of the "l".'
+tags: [linux, nixos, stylix]
+---
+
+## The Stylix Story
+
+### Configuration hellscape
+
+What's a better time to waste your own time than to customize your desktop?
+Heck, there are entire communities like
+[Unixporn](https://lemmy.world/c/unixporn) based around this hobby. I myself
+have spent countless months on this, as far back as
+[my first post about custom setups](/blog/my-first-custom-linux-setup). It can
+be really fun at first, but after the honeymoon phase is over, it quickly
+becomes tiring. The hardest part for me has always been configuring color
+schemes, because manualy doing so was a lot of efford.
+
+In the configuration from the aforementioned post, I used Arch, which is famous
+for its customizability. There, I settled on using
+[Pywal](https://github.com/dylanaraps/pywal), which is a handy CLI tool that
+generates a color scheme from my wallpaper and could output it in various file
+formats. _Note: Pywal has been archived, but
+[pywal16](https://github.com/eylles/pywal16) looks like a good successor._
+
+![A screenshot of my Arch setup where the color scheme is generated using Pywal and my wallpaper.](@assets/illustrations/arch-setup.png)
+
+There are also other tools like
+[Tinted Theming](https://github.com/tinted-theming/home) (previously base16) and
+[Catppuccin](https://catppuccin.com) that do the same, but with a fixed set of
+color schemes. Nonetheless, this was still too much work for me, because it
+involved the manual step of finding out where to put the generated files for
+each application I was using.
+
+### Nix
+
+Nowadays, I'm not using Arch anymore. Instead I'm using another Linux-based
+operating system called NixOS. It is just as customizable as Arch, but it uses a
+different package manager and configuration system called Nix.
+
+Nix is made unique by the way it lets you write single configuration file and
+use it anywhere you want! Gone are the days of crawling through the settings on
+every new device you set up. Since the configuration file is also text-based,
+it's often uploaded to platforms like GitHub where it can be shared with others,
+e.g. in the form of so-called
+[Flakes](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes).
+
+### The solution
+
+Bluntly put, [Stylix](https://stylix.danth.me) is just a Flake like every other
+Flake before it. But I think it's so much more, because it takes the core
+selling point of Nix and elevates it to another level! Similarily to Nix, Stylix
+takes your preferences and applies them anywhere you want. But Stylix does so
+with your styling preferences and to a variety of applications.
+
+In contrast to the other tools I mentioned however, Stylix isn't just limited to
+just color schemes: It can also do wallpapers, fonts and even icon packs. It
+doesn't even matter whether you're using GNOME, KDE, or Hyprland -- Stylix
+probably already can probably style your entire desktop. And if it doesn't, you
+can just
+[contribute a module](https://stylix.danth.me/modules.html#module-template) or
+[use its templating engine](https://stylix.danth.me/modules.html#how-to-apply-colors)
+in your own configuration!
+
+## Demo
+
+Just because I'm so proud of my configuration and you probably want to know what
+Stylix would look like, here is a quick demo from
+[my own NixOS configuration](https://nixdots.bricked.dev).
+
+![A screenshot of my NixOS setup showing a GNOME desktop with a selection of applications that can be styled using Stylix.](@assets/illustrations/nixos-stylix.png)
+
+As you can see, Stylix can style any application, be it browsers, terminals,
+Spicetify, or even modded Discord clients. In addition to that, all native GTK
+and QT applications are supported, which should cover most Linux needs. In fact,
+my current NixOS configuration doesn't have a single app that's not styled using
+Stylix!
+
+## Try it yourself
+
+If you are now as hyped about Stylix as I am, just head over to its
+documentation for the
+[installation process](https://stylix.danth.me/installation.html). Vimjoyer also
+made [a great video](https://youtu.be/ljHkWgBaQWU) covering this process.
+Additionally, Stylix provides [testbeds](https://stylix.danth.me/testbeds.html)
+which let you preview application themes before installing them. You can run
+these on any system with Nix installed, but be told that they might take some
+time to compile.
+
+This has been my first long blog post, so if you have any feedback or
+suggestions, make sure to [get in contact with me](/socials) until I implement a
+commenting feature :)
