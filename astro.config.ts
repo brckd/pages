@@ -3,6 +3,7 @@ import sitemap from "@astrojs/sitemap";
 import vercel from "@astrojs/vercel";
 import netlify from "@astrojs/netlify";
 import { FontaineTransform } from "fontaine";
+import type { RedirectConfig } from "astro";
 import icon from "astro-icon";
 type IconOptions = Parameters<typeof icon>[0];
 
@@ -28,6 +29,18 @@ const iconOptions: IconOptions = {
   },
 };
 
+const redirects: Record<string, RedirectConfig> = {
+  "/blog/magically-style-your-desktop-with-stylix": "/blog/magic-stylix",
+  "/blog/my-first-custom-linux-setup": "/blog/arch-setup",
+  "/blog/celebrating-a-new-domain": "/blog/new-domain",
+  "/blog/welcome-to-my-blog": "/blog/welcome",
+  "/blog/every-minute-counts": "/blog/read-counters",
+  "/blog/introducing-tags": "/blog/blog-tags",
+  "/blog/undergoing-an-overhaul": "/blog/online-presence-v2",
+  "/blog/the-glow-up-is-real": "/blog/online-presence-v3",
+  "/blog/a-sight-to-behold": "/blog/blog-images",
+};
+
 export default defineConfig({
   site: SITE_URI,
   server: {
@@ -36,6 +49,7 @@ export default defineConfig({
       "X-Content-Type-Options": "nosniff",
     },
   },
+  redirects,
   markdown,
   integrations: [mdx(), sitemap(), icon(iconOptions)],
   adapter:
