@@ -36,15 +36,7 @@ const filteredPosts = activeTags.size
           .minutes;
         return (
           <Item>
-            <Card
-              title={data.title}
-              href={`/blog/${slug}`}
-              description={data.description}
-              image={data.banner}
-              imageAlt={data.bannerAlt}
-              readTime={readTime}
-              pubDate={data.pubDate}
-            >
+            <Card {...data} href={`/blog/${slug}`} readTime={readTime}>
               <Tags slot="header" tags={data.tags} />
             </Card>
           </Item>

@@ -13,8 +13,8 @@ const blog = defineCollection({
         .string()
         .optional()
         .transform((str) => (str ? new Date(str) : undefined)),
-      banner: image().optional(),
-      bannerAlt: z.string().default("An illustration for the article."),
+      image: image().optional(),
+      imageAlt: z.string().default("An illustration for the article."),
       tags: z.array(z.string()).default([]),
     }),
 });

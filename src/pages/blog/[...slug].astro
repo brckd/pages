@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { pubDate, title, tags, banner, bannerAlt, description } = post.data;
+const { pubDate, title, tags, image, imageAlt, description } = post.data;
 const { Content, remarkPluginFrontmatter } = await post.render();
 ---
 
@@ -27,10 +27,10 @@ const { Content, remarkPluginFrontmatter } = await post.render();
     <div class="grid">
       <span class="article-description">{description}</span>
       {
-        banner && (
+        image && (
           <Illustration
-            src={banner}
-            alt={bannerAlt}
+            src={image}
+            alt={imageAlt}
             loading="eager"
             class="article-image"
           />
