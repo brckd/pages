@@ -2,14 +2,11 @@
 import "@styles/fonts.css";
 import "@styles/global.css";
 
-import Head from "@comps/Head.astro";
+import Head, { type Props as HeadProps } from "@comps/Head.astro";
 import Header from "@comps/Header.astro";
 import Footer from "@comps/Footer.astro";
 
-export interface Props {
-  title: string;
-  description?: string;
-}
+export type Props = HeadProps;
 
 const { title = "" } = Astro.props;
 ---
