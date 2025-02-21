@@ -1,26 +1,26 @@
 ---
 import { SITE_TITLE, SITE_DESCRIPTION, THEME_COLOR } from "@src/consts";
 import { getImage } from "astro:assets";
-import { type GetImageResult } from "astro/dist/assets/types";
 import icon from "@assets/icons/icon.png";
 import lexendWoff2 from "@fontsource-variable/lexend/files/lexend-latin-wght-normal.woff2?url";
 
-interface Props {
+export interface Props {
   title?: string;
   description?: string;
+  image?: Parameters<typeof getImage>[0]["src"];
 }
 
-const { title = "", description = SITE_DESCRIPTION } = Astro.props;
+const { title = "", description = SITE_DESCRIPTION, image } = Astro.props;
 let longTitle = title;
 if (longTitle) longTitle += " - ";
 longTitle += SITE_TITLE;
 
-const image = await getImage({
-  src: icon,
+const optimizedImage = await getImage({
+  src: image ?? icon,
   height: 1200,
 });
 
-function getIconAttributes(icon: GetImageResult) {
+function getIconAttributes(icon: Awaited<ReturnType<typeof getImage>>) {
   return {
     src: icon.src,
     type: `image/${icon.options.format}`,
@@ -63,9 +63,12 @@ const icons = await Promise.all(
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 <meta property="og:site_name" content={SITE_TITLE} />
-<meta property="og:image" content={image.src} />
+<meta property="og:image" content={optimizedImage.src} />
 
-<meta property="twitter:card" content="summary" />
+<meta
+  property="twitter:card"
+  content={image ? "summary_large_image" : "summary"}
+/>
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
