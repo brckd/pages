@@ -26,6 +26,7 @@ const iconOptions: IconOptions = {
       "copyright",
       "rss",
       "dot",
+      "circle-x",
     ],
   },
 };
