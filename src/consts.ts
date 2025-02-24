@@ -7,5 +7,5 @@ export const SITE_TITLE = "Bricked";
 export const SITE_DESCRIPTION = "Welcome to bricked's personal website!";
 export const SOURCE_REPOSITORY = "https://github.com/brckd/pages";
 export const LICENSE_URI = `${SOURCE_REPOSITORY}/blob/main/LICENSE.md`;
-export const THEME_COLOR = "#89b4fa"; // Catppuccin Mocha blue
-export const BACKGROUND_COLOR = "#1e1e2e"; // Catppuccin Mocha mantle
+export const THEME_COLOR = "#181825"; // Catppuccin Mocha mantle
+export const BACKGROUND_COLOR = "#1e1e2e"; // Catppuccin Mocha base
