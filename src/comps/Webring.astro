@@ -15,7 +15,7 @@ slug ??= name.toLowerCase().replace(" ", "-");
 
 <nav class="webring" aria-label={`${name} webring`} id={`webring-${slug}`}>
   <a class:list={["webring-anchor", "webring-prev"]} href={prevURL}>
-    <Icon name="material-symbols:arrow-back" title="previous webring member" />
+    <Icon name="lucide:arrow-left" title="previous webring member" />
   </a>
   <a
     class:list={["webring-anchor", "webring-index"]}
@@ -25,7 +25,7 @@ slug ??= name.toLowerCase().replace(" ", "-");
     {name} Webring
   </a>
   <a class:list={["webring-anchor", "webring-next"]} href={nextURL}>
-    <Icon name="material-symbols:arrow-forward" title="next webring member" />
+    <Icon name="lucide:arrow-right" title="next webring member" />
   </a>
 </nav>
 

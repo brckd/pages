@@ -19,12 +19,13 @@ const adapter = env.ADAPTER?.toLowerCase();
 
 const iconOptions: IconOptions = {
   include: {
-    "material-symbols": [
-      "arrow-forward",
-      "arrow-back",
+    lucide: [
+      "arrow-right",
+      "arrow-left",
       "chevron-right",
-      "copyright-outline",
-      "rss-feed",
+      "copyright",
+      "rss",
+      "dot",
     ],
   },
 };

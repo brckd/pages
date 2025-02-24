@@ -23,9 +23,9 @@ const filteredPosts = activeTags.size
 <Layout title="Blog">
   <div slot="title" class="title">
     <h1>Blog</h1>
-    <a class="rss-anchor" href="/blog/rss.xml"
-      ><Icon name="material-symbols:rss-feed" title="rss feed" /></a
-    >
+    <a class="rss-anchor" href="/blog/rss.xml">
+      <Icon name="lucide:rss" title="rss feed" />
+    </a>
   </div>
 
   <Tags tags={posts.flatMap((post) => post.data.tags)} id="tags" />
