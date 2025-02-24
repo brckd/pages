@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 export interface Props {
   readTime?: number;
   pubDate?: Date;
@@ -18,8 +20,8 @@ export function formatDate(date: Date) {
 ---
 
 <footer class="info">
-  <slot />
   {readTime && <span class="info-readtime">{formatReadTime(readTime)}</span>}
+  <Icon name="lucide:dot" aria-hidden="true" />
   {
     pubDate && (
       <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
@@ -31,9 +33,7 @@ export function formatDate(date: Date) {
   .info {
     font-size: smaller;
     color: rgb(var(--color-subtext1));
-
-    > :global(*):not(:first-child)::before {
-      content: " · ";
-    }
+    display: flex;
+    align-items: center;
   }
 </style>
